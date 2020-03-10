@@ -22,9 +22,9 @@ sys.path.insert(0, os.path.abspath('../scripts/'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'DE3-Panda-Wall'
+project = 'DE3 Van-Goghbot'
 copyright = '2019'
-author = 'DE3 Wall Team'
+author = 'DE3 Domino team'
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
@@ -108,7 +108,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'DE3-Panda-Walldoc'
+htmlhelp_basename = 'DE3-Domino'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -135,8 +135,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'DE3-Panda-Wall.tex', 'DE3-Panda-Wall Documentation',
-     'DE3 Wall Team', 'manual'),
+    (master_doc, 'DE3-Domino.tex', 'DE3 Van-Goghbot Documentation',
+     'DE3 Domino Team', 'manual'),
 ]
 
 
@@ -145,7 +145,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'de3-panda-wall', 'DE3-Panda-Wall Documentation',
+    (master_doc, 'de3-Domino', 'DE3 Van-Goghbot Documentation',
      [author], 1)
 ]
 
@@ -156,8 +156,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'DE3-Panda-Wall', 'DE3-Panda-Wall Documentation',
-     author, 'DE3-Panda-Wall', 'One line description of project.',
+    (master_doc, 'DE3 Van-Goghbot', 'DE3 Van-Goghbot Documentation',
+     author, 'DE3 Domino team', 'One line description of project.',
      'Miscellaneous'),
 ]
 
@@ -180,4 +180,4 @@ epub_title = project
 epub_exclude_files = ['search.html']
 
 
-autodoc_mock_imports = ["rospy", "roscpp", "std_msgs", "numpy", "scipy","matplotlib","moveit_commander","tf","moveit_msgs","geometry_msgs","std_msgs","actionlib_msgs","moveit_msgs","actionlib","std_srvs","franka_gripper"]
+autodoc_mock_imports = ["rospy", "roscpp", "std_msgs", "numpy", "scipy","matplotlib","moveit_commander","tf","moveit_msgs","geometry_msgs","std_msgs","actionlib_msgs","moveit_msgs","actionlib","std_srvs"]
