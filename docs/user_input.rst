@@ -20,7 +20,7 @@ For our pusposes, we only need the x,y coordinates (to determine where on the ta
 .. figure::  imgs/listener.png
    :align:   center
    
-As such, we use the lookupTransform function from the tf module, allowing us to determine the translation and rotation of each end effector relative to the base.
+As such, we use the ``lookupTransform`` function from the tf module, allowing us to determine the translation and rotation of each end effector relative to the base.
 ::
     try:
         (l_trans,l_rot) = listener.lookupTransform('left_gripper', 'base', rospy.Time(0))
