@@ -27,7 +27,7 @@ As such, we use the lookupTransform function from the tf module, allowing us to 
         print l_trans,l_rot
         (r_trans,r_rot) = listener.lookupTransform('right_gripper', 'base', rospy.Time(0))
     except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
-        continue
+        continue;
 
 We only want to record the coordinates and orientation when the user is ready, so the program waits until it recieves user input:
 
