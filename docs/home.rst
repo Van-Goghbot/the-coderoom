@@ -20,6 +20,8 @@ A unique element of the project was the dynamic arrangement of the bricks along 
 Videos
 -------------
 
+`Project overview`_
+
 `Domino placement - Real life`_
 
 `Domino placement - Simulation`_
