@@ -15,7 +15,7 @@ For the Robotics project, the brief assigned was to apply the 3D kinematics prin
 
 The group was initial given the choice between the DE-NIRO and Panda robots. The group decided that DE-NIRO would be the best choice as our desired task required a large workspace that Panda could not reach, and because DE-NIRO has two arms that could enable the sequence to be completed faster.
 
- A unique element of the project was the dynamic arrangement of the bricks along curved Bezier paths. These were implemented using SVG and were based on given start and end coordinates. This allowed a user to interact with the robot and influence how the dominoes could be arranged. Risk minimisation was also implemented to add robustness. This enabled DE-NIRO to place the bricks from the inside out with a delay between the arms to avoid collision.
+A unique element of the project was the dynamic arrangement of the bricks along curved Bezier paths. These were implemented using SVG and were based on given start and end coordinates. This allowed a user to interact with the robot and influence how the dominoes could be arranged. Risk minimisation was also implemented to add robustness. This enabled DE-NIRO to place the bricks from the inside out with a delay between the arms to avoid collision.
  
 Videos
 -------------
@@ -39,11 +39,7 @@ Github
 Main Contributors
 -------------
 
-Amy Mather, Euan Hay
-
-Other
------
-Esther Maltby, Alisa Lomax, Saym Hussain
+Amy Mather, Euan Hay, Esther Maltby, Alisa Lomax, Saym Hussain
 
 .. _Github repository: https://github.com/Van-Goghbot
 .. _Project overview: https://drive.google.com/file/d/1-CRNby6B7_3nkKOvS4H6r5w4KaBU-2kN/view?usp=sharing
