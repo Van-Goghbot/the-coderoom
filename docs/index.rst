@@ -13,10 +13,3 @@ Welcome to DE3 Van-Goghbot's documentation!
    ordering
    ik
    pnp
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
