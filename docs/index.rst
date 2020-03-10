@@ -9,6 +9,10 @@ Welcome to DE3 Van-Goghbot's documentation!
    home
    getting_start
    user_input
+   bezier
+   ordering
+   ik
+   pnp
 
 Indices and tables
 ==================
