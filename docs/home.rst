@@ -43,7 +43,7 @@ Amy Mather, Euan Hay, Esther Maltby, Alisa Lomax, Saym Hussain
 
 .. _Github repository: https://github.com/Van-Goghbot
 .. _Project overview: https://drive.google.com/file/d/1-CRNby6B7_3nkKOvS4H6r5w4KaBU-2kN/view?usp=sharing
-.. _Domino placement - Simulation: https://drive.google.com/open?id=1E517xbq1VebSo29f8bf77n7HyZpDgVL6
+.. _Domino placement - Simulation: https://drive.google.com/open?id=16EYv2J6Ya6HUyTFgOLBw7UTCwGWKd9ai
 .. _Domino placement - Real life: https://drive.google.com/file/d/1upAYPv9WAtRqW-wK1cnZig8cDrmZvin2/view?fbclid=IwAR2OWkxUuuH4r3dMeiGpXatqs_VzAjbUqYJ-8Y4pmy0s-TFVt2B1EIfaAgg
 .. _Setting up and running code: https://drive.google.com/open?id=164bEFaRacpHIMV_tlWwU3duqRCKpdJvD
-.. _Presentation slides: https://www.dropbox.com/s/uztyttssk7mjkrf/robotics%20presentation.pdf?dl=0
+.. _Presentation slides: https://imperiallondon-my.sharepoint.com/:p:/r/personal/aem4717_ic_ac_uk/Documents/Robotics%20Animation%20Celebration.pptx?d=w0f6adfd3853f42e49dc6cef74dffe3f8&csf=1&e=LNiWVl
