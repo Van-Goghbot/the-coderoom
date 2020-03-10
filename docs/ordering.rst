@@ -20,6 +20,6 @@ Both lists need to be sorted into ascending order, the right list is then revers
     right.sort()
     right = right[::-1]
     left.sort()
-::
+
 .. figure::  imgs/ordering.png
    :align:   center
