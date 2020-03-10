@@ -8,14 +8,7 @@ Welcome to DE3 Van-Goghbot's documentation!
 
    home
    getting_start
-   arm_master
-   brick
-   spawn_doc
-   de_msgs
-   gazebo_problems
-   real_panda
-   api_reference
-   interface
+   user_input
 
 Indices and tables
 ==================
