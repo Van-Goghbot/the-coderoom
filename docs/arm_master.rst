@@ -20,14 +20,14 @@ For our pusposes, we only need the x,y coordinates (to determine where on the ta
    :align:   center
    
 As such, we use the lookupTransform function from the tf module, allowing us to determine the translation and rotation of each end effector relative to the base.
-
+""
     try:
         (l_trans,l_rot) = listener.lookupTransform('left_gripper', 'base', rospy.Time(0))
         print l_trans,l_rot
         (r_trans,r_rot) = listener.lookupTransform('right_gripper', 'base', rospy.Time(0))
     except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
         continue
-        
+""
 We only want to record the coordinates and orientation when the user is ready, so the program waits until it recieves user input:
 
     if ready == 'Y':
