@@ -1,4 +1,4 @@
-Welcome to DE3-Panda-Wall's documentation!
+Welcome to DE3 Van-Goghbot's documentation!
 ==========================================
 
 
