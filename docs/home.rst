@@ -2,7 +2,7 @@
 Introduction
 ========================
 
-.. figure::  imgs/Screenshot_16.png
+.. figure::  imgs/deniro_simulated.png
    :align:   center
 
 
