@@ -9,10 +9,11 @@ Overview
 Code overview
 ------------------------
 We determine the start and end points by creating a listener for the left and right arms. A tranform listener is first initialised with a rate of 10 refreshes per second.
-
+::
     def get_coordinates():
         listener = tf.TransformListener()
         rate = rospy.Rate(10.0)
+::
         
 For our pusposes, we only need the x,y coordinates (to determine where on the table it will be positioned) and the yaw angle (to determine the placement orientation).
 
