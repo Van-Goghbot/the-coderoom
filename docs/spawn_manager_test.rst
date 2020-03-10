@@ -1,2 +1,0 @@
-Spawn Manager Package
-========================
