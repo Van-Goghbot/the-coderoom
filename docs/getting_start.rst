@@ -16,3 +16,6 @@ Instructions
 3. Once Gazebo has launched, open a new terminator window and navigate to the folder containing the Dominoes reposotitory code using the cd command.
 4. Finally, run "python right_placement.py" and follow the prompts in the terminal to see the domino placing simulation in action.
 
+.. figure::  imgs/terminator.png
+   :align:   center
+
