@@ -1,24 +1,9 @@
 
-AR Robotic Sandbox
+Introduction
 ========================
 
 .. figure::  imgs/Screenshot_16.png
    :align:   center
-
-This Robotics project took place at the Dyson School of Engineering at the start of 2019.
-
-ROS was used to program an industrial Franka Panda Robot to perform pick and place task of foam bricks.
-
-All code for project is available in the `team git repo`_
-
-Development focused on 3 main packages and 1 custom message package:
-
-* `arm_master`_
-* `brick_manager`_
-* `spawn_manager`_
-* `de_msgs`_
-
-Setup documentation and overall comments have been grouped here.
 
 
 Videos
@@ -26,41 +11,39 @@ Videos
 
 `Project overview`_
 
-The aim of this project was to build a foam brick wall that was both tall and aesthetic. We accomplished this by
-by programming a Franka Panda robot to pick up and place bricks into the desired locations. Further we were highly interested in the
-possibility of commanding Panda and designing the wall using augment reality technology. For this a mirror environment, with an identical workspace to
-the real setup, was created in Unity 3D. Using this software were able manipulate virtual bricks. The program then save the position
-of the bricks in the resulting design into a text file for processing on the robot.
+For the Robotics project, the brief assigned was to apply the 3D kinematics principles learnt in term 1 to program a robot to complete a set task. From the initial brief, the group decided to focus on programming DE-NIRO to create a domino sequence and knowck it down using the given foam bricks. The main steps involved picking the bricks, reorientation the bricks, placing the bricks in a path, and successfully knocking over the bricks. Due to the nature of the robotics projects, this initial high-level structure was broken down further.
 
-While the entire workflow was never executed, what we demonstrate in this video is a "Wizard of Oz" concept. Certainly in the
-future, advanced robot programming techniques such as using AR will become more accessible.
+The group was initial given the choice between the DE-NIRO and Panda robots. The group decided that DE-NIRO would be the best choice as our desired task required a large workspace that Panda could not reach, and because DE-NIRO has two arms that could enable the sequence to be completed faster.
 
+ A unique element of the project was the dynamic arrangement of the bricks along curved Bezier paths. These were implemented using SVG and were based on given start and end coordinates. This allowed a user to interact with the robot and influence how the dominoes could be arranged. Risk minimisation was also implemented to add robustness. This enabled DE-NIRO to place the bricks from the inside out with a delay between the arms to avoid collision.
+ 
+Videos
+-------------
 
-`Robot building wall in simulation`_
+`Domino placement - Real life`_
 
-`Robot building wall in real-life`_
+`Domino placement - Simulation`_
 
 `Setting up and running code`_
 
 Presentation
 -------------
 
-`Robot demo presentation slides`_
+`Presentation slides`_
+
+Github
+-------------
+
+`Github repository`_
 
 Main Contributors
 -------------
 
-Keith Li, Daniel Yin, Zachary Yamaoka
+Amy Mather, Euan Hay, Esther Maltby, Alisa Lomax, Saym Hussain
 
-.. _team git repo: https://github.com/de3-robo
-.. _arm_master: https://github.com/de3-robo/arm_master
-.. _brick_manager: https://github.com/de3-robo/brick_manager
-.. _spawn_manager: https://github.com/de3-robo/spawn_mnger
-.. _de_msgs: https://github.com/de3-robo/de_msgs
-
-
+.. _Github repository: https://github.com/Van-Goghbot
 .. _Project overview: https://drive.google.com/file/d/1-CRNby6B7_3nkKOvS4H6r5w4KaBU-2kN/view?usp=sharing
-.. _Robot building wall in simulation: https://drive.google.com/open?id=1E517xbq1VebSo29f8bf77n7HyZpDgVL6
-.. _Robot building wall in real-life: https://drive.google.com/file/d/1upAYPv9WAtRqW-wK1cnZig8cDrmZvin2/view?fbclid=IwAR2OWkxUuuH4r3dMeiGpXatqs_VzAjbUqYJ-8Y4pmy0s-TFVt2B1EIfaAgg
+.. _Domino placement - Simulation: https://drive.google.com/open?id=1E517xbq1VebSo29f8bf77n7HyZpDgVL6
+.. _Domino placement - Real life: https://drive.google.com/file/d/1upAYPv9WAtRqW-wK1cnZig8cDrmZvin2/view?fbclid=IwAR2OWkxUuuH4r3dMeiGpXatqs_VzAjbUqYJ-8Y4pmy0s-TFVt2B1EIfaAgg
 .. _Setting up and running code: https://drive.google.com/open?id=164bEFaRacpHIMV_tlWwU3duqRCKpdJvD
-.. _Robot demo presentation slides: https://www.dropbox.com/s/uztyttssk7mjkrf/robotics%20presentation.pdf?dl=0
+.. _Presentation slides: https://www.dropbox.com/s/uztyttssk7mjkrf/robotics%20presentation.pdf?dl=0
