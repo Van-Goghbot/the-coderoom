@@ -17,7 +17,7 @@ import sys
 # sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('../../'))
-sys.path.insert(0, os.path.abspath('../scripts/'))
+sys.path.insert(0, os.path.abspath('../dominoes/'))
 
 
 # -- Project information -----------------------------------------------------
@@ -157,7 +157,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'DE3 Van-Goghbot', 'DE3 Van-Goghbot Documentation',
-     author, 'DE3 Domino team', 'One line description of project.',
+     author, 'DE3 Domino team', 'Dominoes with the Baxter Robot.',
      'Miscellaneous'),
 ]
 
