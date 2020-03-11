@@ -12,4 +12,5 @@ Welcome to DE3 Van-Goghbot's documentation!
    bezier
    ordering
    ik
-   pnp
+   pick
+   place
