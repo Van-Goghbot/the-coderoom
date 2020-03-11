@@ -9,7 +9,6 @@ In developing the placing sequence, the group implemented an SVG code to dynamic
    :language: python
    :start-after: self.y = y
    :end-before: def conversion
-   :lineos:
    
 
 T - Space vs Cartesean Space
