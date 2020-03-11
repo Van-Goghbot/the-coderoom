@@ -11,10 +11,30 @@ We will now walk step by step to go from an empty workspace to a robot that can 
 Instructions
 -------------------------
 
-1. Run roscore from a new terminator window.
-2. Open a new terminator window and run ``roslaunch baxter_world baxter_gazebo``.
-3. Once Gazebo has launched, open a new terminator window and navigate to the folder containing the Dominoes reposotitory code using the ``cd`` command.
+1. Run roscore from a new terminal window.
+
+.. code-block:: console
+    :linenos:
+    
+    >>> roscore
+2. Open a new terminal window and run gazebo
+
+.. code-block:: console
+    :linenos:
+    
+    >>> roslaunch baxter_world baxter_gazebo
+3. Once Gazebo has launched, open a new terminal window and navigate to the folder containing the Dominoes reposotitory code.
+
+.. code-block:: console
+    :linenos:
+    
+    >>> cd Dominoes
 4. Finally, run ``python right_placement.py`` and follow the prompts in the terminal to see the domino placing simulation in action.
+
+.. code-block:: console
+    :linenos:
+    
+    >>> python right_placement.py
 
 .. figure::  imgs/terminator.png
    :align:   center
