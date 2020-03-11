@@ -40,6 +40,7 @@ Contributors
 -------------
 
 Amy Mather, Euan Hay
+
 Esther Maltby, Alisa Lomax, Saym Hussain
 
 .. _Github repository: https://github.com/Van-Goghbot
