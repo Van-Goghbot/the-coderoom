@@ -5,14 +5,16 @@ Bezier Curve
 ============
 In developing the placing sequence, the group implemented an SVG code to dynamically place each brick after the pick sequence. The SVG uses a bezier curve with two handles; the curvature of the SVG is determined by the length of the handles.
 
-.. literalinclude:: dominoes_code/bezier_conversion.py
+.. literalinclude:: /dominoes/bezier_conversion.py
    :language: python
-   :start-after: class Bezier:
-   :end-before: return self.length
+   :start-after: self.y = y
+   :end-before: def conversion
+   :lineos:
    
 
 T - Space vs Cartesean Space
 ----------------------------
+Bexiers
 
 Representing a Bezier in Code
 -----------------------------
