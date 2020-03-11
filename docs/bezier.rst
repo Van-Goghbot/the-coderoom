@@ -4,8 +4,9 @@ In developing the placing sequence, the group implemented an SVG code to dynamic
 
 .. literalinclude:: /dominoes/bezier_conversion.py
    :language: python
-   :emphasize-lines: 12,15-18
-   :linenos:
+   :start-after: class Bezier:
+   :end-before: return self.length
+   
 
 T - Space vs Cartesean Space
 ----------------------------
