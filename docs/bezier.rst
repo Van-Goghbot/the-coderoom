@@ -14,7 +14,11 @@ In developing the placing sequence, the group implemented an SVG code to dynamic
 
 T - Space vs Cartesean Space
 ----------------------------
-Bexiers
+Beziers work by converting a value from 0 and 1 into x and y coordinates. They're defined by 4 control points.
+[insert image of control points]
+
+These control points are used in the following equation:
+
 
 Representing a Bezier in Code
 -----------------------------
