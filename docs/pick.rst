@@ -1,2 +1,2 @@
-Pick and Place
+Picking
 =======================
