@@ -2,7 +2,7 @@ Bezier Curve
 ============
 In developing the placing sequence, the group implemented an SVG code to dynamically place each brick after the pick sequence. The SVG uses a bezier curve with two handles; the curvature of the SVG is determined by the length of the handles.
 
-.. literalinclude:: /Dominos/bezier_conversion.py
+.. literalinclude:: /dominoes/bezier_conversion.py
    :language: python
    :emphasize-lines: 12,15-18
    :linenos:
