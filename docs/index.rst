@@ -14,3 +14,5 @@ Welcome to DE3 Van-Goghbot's documentation!
    ik
    pick
    place
+   improvements
+   evaluation
