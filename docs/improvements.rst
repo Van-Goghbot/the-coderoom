@@ -8,3 +8,7 @@ DENIRO has an very large reachable workspace, which was one of the reasons we ch
    :align:   center
    
 This would be achieved through adding extra waypoints for the bezier to intersect with; allowing for even more interesting paths.
+
+Multi-threading
+----------------------
+Whilst our use of the subprocess module was succesful in practice, much of the debugging is clunky and overly complicated. The uasge of mult-threading may be beneficial to the improvement of our implementation.
