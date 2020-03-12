@@ -221,8 +221,9 @@ The calculated spacing is then used to find the x and y coordinates for each bri
    :language: python
    :lines: 53 - 66
    :lineno-start: 53
-
-On lines 53 and 56 a scaling and tranlation transfomation is applied, this is becuase the Bezier and the Baxter robot have different base coordinate systems and units.
+   :emphasize-lines: 53, 56
+   
+On lines 53 and 56 a scaling and translation transfomation is applied, this is becuase the Bezier and the Baxter robot have different base coordinate systems and units.
 
 This method successfully evenly spaces the bricks. However as can be seen, this is still not a functional domino path, as all the bricks are facing the same direction.
 
@@ -244,6 +245,7 @@ The tangent line is calculated by deviating very slightly from the specified t v
 
 
 The value of ``dt`` is set to 0.01 which we found to work well.
+
 .. literalinclude:: dominoes_code/bezier_interpolation.py
    :language: python
    :lines: 44
@@ -260,8 +262,8 @@ The calculated poses are used to create new instances of the Coordinate class, a
 
 .. literalinclude:: dominoes_code/bezier_interpolation.py
    :language: python
-   :lines: 44
-   :lineno-start: 44
+   :lines: 75 - 79
+   :lineno-start: 75
 
 So now the final output is a valid domino path which is automatically generated from any start parameters. *happy dance*
 
