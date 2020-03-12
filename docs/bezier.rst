@@ -13,7 +13,8 @@ T - Space vs Cartesian Space
 ----------------------------
 Beziers work by converting a value from 0 and 1 into x and y coordinates. They're defined by 4 control points.
 
-[insert image of control points]
+.. figure::  imgs/control_points.png
+   :align:   center
 
 These control points are used in the following equation:
 
@@ -42,6 +43,10 @@ The instantiation of a Bezier object takes a string input which can be copied fr
    :dedent: 1
 
 NOTE: Alternatively you can easily construct your own string, as it is essentially just a list of coordinates in the following format:
+
+"M:math:`P0_x`,:math:`P0_y`C:math:`P1_x`, :math:`P1_y`, :math:`P2_x`, :math:`P2_y`, :math:`P3_x`, :math:`P3_y`"
+
+Capital M is code for absolute move to, and capital C is code for absolute curve. You can find out more about the svg Bezier format `here <https://www.w3.org/TR/SVG/paths.html`_.
 
 
 Conversion
