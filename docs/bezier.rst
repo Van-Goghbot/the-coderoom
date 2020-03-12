@@ -5,7 +5,7 @@ In order to solve the problem of generating a dynamic placement path for the dom
 .. figure::  imgs/adaptive_path.gif
    :align:   center
 
-The ability to generate different curves based upon two positions and orientaions was well suited to our project. Additionally the abilty to adjust how much influence the start and end orientations have on the curve proved very helpful when automating the adaption of the curve if an inverse kinematics solution couldn't be found. 
+The ability to generate different curves based upon two positions and orientations was well suited to our project. Additionally the ability to adjust how much influence the start and end orientations have on the curve proved very helpful when automating the adaption of the curve if an inverse kinematics solution couldn't be found. 
 
 The implementation for this part of the project is split into two python files, ``bezier_conversion.py`` and ``bezier_interpolation.py``. Where bezier conversion contains the code that defines the Bezier class we created and bezier interpolation uses this class, and the placed brick positions to generate the positions and orientations of the bricks go inbetween.
 
@@ -77,7 +77,7 @@ This method takes a t value and returns the corresponding x coordinate. The vari
    :lineno-start: 59
    :dedent: 1
 
-The code is the equvilent of the following mathematical expression:
+The code is the equivalent of the following mathematical expression:
 
 .. math:: B_x(t)=(1-t)^{3} P_{0x} + 3(1-t)^{2} t P_{1x} + 3(1-t) t^{2} P_{2x} + t^{3} P_{3x}
 
@@ -92,7 +92,7 @@ This method takes a t value and returns the corresponding y coordinate. The vari
    :lineno-start: 66
    :dedent: 1
 
-The code is the equvilent of the following mathematical expression:
+The code is the equivalent of the following mathematical expression:
 
 .. math:: B_y(t)=(1-t)^{3} P_{0y} + 3(1-t)^{2} t P_{1y} + 3(1-t) t^{2} P_{2y} + t^{3} P_{3y}
 
@@ -127,7 +127,7 @@ The angle of rotation, plus the variable handle influence variable are used to c
    :linenos:
    :lineno-start: 13
 
-These coordinates are then fed into a string variable called ``bezier_string`` which is consitent with the XML standard for representing Bezier curves. The variable ``bezier_string`` is passed as an argument in the instantiation of a new Bezier object. This means that we can now calculate the x and y coordinates of every point along the generated path by calling ``brick_path.B_x(t)`` and ``brick_path.B_y(t)``.
+These coordinates are then fed into a string variable called ``bezier_string`` which is consistent with the XML standard for representing Bezier curves. The variable ``bezier_string`` is passed as an argument in the instantiation of a new Bezier object. This means that we can now calculate the x and y coordinates of every point along the generated path by calling ``brick_path.B_x(t)`` and ``brick_path.B_y(t)``.
 
 .. literalinclude:: dominoes_code/bezier_interpolation.py
    :language: python
