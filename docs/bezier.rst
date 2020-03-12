@@ -1,10 +1,15 @@
 Bezier Curve
 ============
-In developing the placing sequence, the group implemented an SVG code to dynamically place each brick after the pick sequence. The SVG uses a bezier curve with two handles; the curvature of the SVG is determined by the length of the handles.
+In order to solve the problem of generating a dynamic placement path for the dominoes the Bezier format of representing curves was ideal. 
+
+The ability to generate different curves based upon two positions and orientaions was well suited to our project. Additionally the abilty to adjust how much influence the start and end orientations have on the curve proved very helpful when automating the adaption of the curve if an inverse kinematics solution couldn't be found. 
+
+The implementation for this part of the project is split into two python files, ``bezier_conversion.py`` and ``bezier_interpolation.py``. Where bezier conversion contains the code that defines the Bezier class we created and bezier interpolation uses this class, and the placed brick positions to generate the positions and orientations of the bricks go inbetween.
 
 T - Space vs Cartesian Space
 ----------------------------
 Beziers work by converting a value from 0 and 1 into x and y coordinates. They're defined by 4 control points.
+
 [insert image of control points]
 
 These control points are used in the following equation:
