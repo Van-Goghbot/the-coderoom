@@ -2,7 +2,8 @@ Bezier Curve
 ============
 In order to solve the problem of generating a dynamic placement path for the dominoes the Bezier format of representing curves was ideal. 
 
-[insert gif of adaptive path control]
+.. figure::  imgs/adaptive_path.gif
+   :align:   center
 
 The ability to generate different curves based upon two positions and orientaions was well suited to our project. Additionally the abilty to adjust how much influence the start and end orientations have on the curve proved very helpful when automating the adaption of the curve if an inverse kinematics solution couldn't be found. 
 
@@ -17,6 +18,11 @@ Beziers work by converting a value from 0 and 1 into x and y coordinates. They'r
 These control points are used in the following equation:
 
 .. math:: B(t)=\sum_{i=0}^{n} {}_n \mathrm{ C }_i (1-t)^{n-i} t^{i} P_{i}
+
+As the value of t increases, the x and y coordinates move from the start to the end of the path.
+
+.. figure::  imgs/bt.gif
+   :align:   center
 
 Representing a Bezier in Code
 -----------------------------
