@@ -184,14 +184,15 @@ To place bricks evenly along the path, it was covenient to not only know the tot
 
 This could be done by performing the iteration each time a coordinate a certain distance along the path needed to be calculated. However this would've been highly inefficient.
 
-Therefore we utilized memoisation, to create a cache of which distances correspond to which t value. (This t value can then be fed into the ``brick_path.B_x(t)`` and ``brick_path.B_y(t)``methods to get the coordinate values.)
+Therefore we utilized memoisation, to create a cache of which distances correspond to which t value. (This t value can then be fed into the ``brick_path.B_x(t)`` and ``brick_path.B_y(t)`` methods to get the coordinate values.)
 
 
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
-   :lines: 76, 88 - 90
+   :lines: 76 - 90
+   :highlight: 76, 88 - 99
    :linenos:
-   :lineno-start: 88
+   :lineno-start: 79
 
 In the `length_approximation method` each time a new length is calculated a dictionary called `t_map` is updated. Not only is this dictionary updated with the distance which corresponds with current t value being explored, but all the values of distance that exist between the previously calculated length and the current length to 3 decimal places are stored as keys to that t value.
 
@@ -199,12 +200,44 @@ This has the effect of any distance you look up effectively snapping to the clos
 
 
 Converting Distance Along Path to Cartesean Coordinates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+First of all the brick path's length is calculated using the method descibed above.
+
+.. literalinclude:: dominoes_code/bezier_interpolation.py
+   :language: python
+   :lines: 42
+   :lineno-start: 42
+
+Then an ideal spacing is defined, in our case this is 14 as this corresponds to the length of a toppled domino. This spacing is used to determine how many bricks will fit along that path. Then, as it is unlikely that the ideal spacing will divide exactly into the total length, the actual spacing is calculated by dividing the path length by the number of bricks being used.
+
+.. literalinclude:: dominoes_code/bezier_interpolation.py
+   :language: python
+   :lines: 46 - 49
+   :lineno-start: 46
+
+The calculated spacing is then used to find the x and y coordinates for each brick. The desired distance along the path is looked up in the t_map, and the outputted t value is used to calulate the x and y values.
+
+.. literalinclude:: dominoes_code/bezier_interpolation.py
+   :language: python
+   :lines: 53 - 66
+   :highlight: 65 - 66
+   :lineno-start: 53
+
+On lines 53 and 56 a scaling and tranlation transfomation is applied, this is becuase the Bezier and the Baxter robot have different base coordinate systems and units.
+
+This method successfully evenly spaces the bricks. However as can be seen, this is still not a functional domino path, as all the bricks are facing the same direction.
+
+.. figure::  imgs/even_but_flat.png
+   :align:   center
 
 Rotating the Bricks to be Normal to the Path
 ---------------------------------------------
 Calculating Tangent Line
 ^^^^^^^^^^^^^^^^^^^^^^^^
+To overcome this issue the tangent to the curve at each coordinate is calculated, and the bricks are then placed so they're normal to the curve.
+
+The tangent is calculated by deviating very slighlty from the specified t value using the variable ``dt``.
+
 
 Converting to Rotation
 ^^^^^^^^^^^^^^^^^^^^^^
