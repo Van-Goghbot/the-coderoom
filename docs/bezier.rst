@@ -132,8 +132,6 @@ Evenly Spaced t Values
 
 It would seem intuitive that if you wanted to evenly place 9 bricks along the path then you would increment the t value in 8 even steps.
 
-.. highlight:: python
-
 ::
    for i in range(9):
       t = i * (1/8)
