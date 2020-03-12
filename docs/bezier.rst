@@ -12,7 +12,7 @@ Beziers work by converting a value from 0 and 1 into x and y coordinates. They'r
 
 These control points are used in the following equation:
 
-.. math:: B(t)=\sum_{i=0}^{n} \binom(n, i) (1-t)^{n-i} t^{i} P_{i}
+.. math:: B(t)=\sum_{i=0}^{n} {}_n \mathrm{ C }_i (1-t)^{n-i} t^{i} P_{i}
 
 Representing a Bezier in Code
 -----------------------------
