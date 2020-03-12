@@ -155,7 +155,7 @@ def main():
             #Adjust coordinates to account for slant of table
             adjusted_z = table_height + ((float(brick.y)+relaive_table_length)*scale_factor*incline_angle)/scale_difference
 
-            #Check whether inverse kinematics for each point on a path
+            #Check inverse kinematics for each point on a path
             error_check = domino.ik_test(round(brick.y, 3),round(brick.x, 3),adjusted_z,incline_angle,math.pi,brick.rot,hover,right_pnp,left_test)
 
             #Flag if any of the coordinates on the path fail
