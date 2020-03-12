@@ -10,6 +10,7 @@ The code for ordering code is relatively simple, we first need to divide the coo
 
 .. literalinclude:: dominoes_code/right_placement.py
    :language: python
+   :dedent: 1
    :lines: 147-153
    :linenos:
    :lineno-start: 147
@@ -18,6 +19,7 @@ Both lists need to be sorted into ascending order, the right list is then revers
 
 .. literalinclude:: dominoes_code/right_placement.py
    :language: python
+   :dedent: 2
    :lines: 172-175
    :linenos:
    :lineno-start: 172
