@@ -12,9 +12,9 @@ We determine the start and end points by creating a listener for the left and ri
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
-   :lines: 5-8
+   :lines: 4-7
    :linenos:
-   :lineno-start: 5
+   :lineno-start: 4
         
 For our pusposes, we only need the x,y coordinates (to determine where on the table it will be positioned) and the yaw angle (to determine the placement orientation).
 
@@ -25,24 +25,24 @@ As such, we use the ``lookupTransform`` function from the tf module, allowing us
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
-   :lines: 15-21
+   :lines: 14-20
    :linenos:
-   :lineno-start: 15
+   :lineno-start: 14
 
 We only want to record the coordinates and orientation when the user is ready, so the program waits until it recieves user input:
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
-   :lines: 26-29
+   :lines: 25-28
    :linenos:
-   :lineno-start: 26
+   :lineno-start: 25
             
 Finally, we want to convert these angles from quaternions to radians for the sake of readibility
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
-   :lines: 32-37
+   :lines: 31-36
    :linenos:
-   :lineno-start: 32
+   :lineno-start: 31
     
 These values for the start and end positions are now ready to produce a bezier curve!
