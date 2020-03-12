@@ -2,6 +2,8 @@ Bezier Curve
 ============
 In order to solve the problem of generating a dynamic placement path for the dominoes the Bezier format of representing curves was ideal. 
 
+[insert gif of adaptive path control]
+
 The ability to generate different curves based upon two positions and orientaions was well suited to our project. Additionally the abilty to adjust how much influence the start and end orientations have on the curve proved very helpful when automating the adaption of the curve if an inverse kinematics solution couldn't be found. 
 
 The implementation for this part of the project is split into two python files, ``bezier_conversion.py`` and ``bezier_interpolation.py``. Where bezier conversion contains the code that defines the Bezier class we created and bezier interpolation uses this class, and the placed brick positions to generate the positions and orientations of the bricks go inbetween.
@@ -43,7 +45,7 @@ These coordinates are converted into ``Node`` objects. The node class is very si
 
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
-   :pyobject: None
+   :pyobject: Node
    :linenos:
    :lineno-start: 3
 
