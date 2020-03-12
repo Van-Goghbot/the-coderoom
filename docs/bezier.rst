@@ -2,7 +2,8 @@ Bezier Curve
 ============
 In order to solve the problem of generating a dynamic placement path for the dominoes the Bezier format of representing curves was ideal. 
 
-[insert gif of adaptive path control]
+.. figure::  imgs/adaptive_path.gif
+   :align:   center
 
 The ability to generate different curves based upon two positions and orientaions was well suited to our project. Additionally the abilty to adjust how much influence the start and end orientations have on the curve proved very helpful when automating the adaption of the curve if an inverse kinematics solution couldn't be found. 
 
@@ -17,6 +18,11 @@ Beziers work by converting a value from 0 and 1 into x and y coordinates. They'r
 These control points are used in the following equation:
 
 .. math:: B(t)=\sum_{i=0}^{n} {}_n \mathrm{ C }_i (1-t)^{n-i} t^{i} P_{i}
+
+As the value of t increases, the x and y coordinates move from the start to the end of the path.
+
+.. figure::  imgs/bt.gif
+   :align:   center
 
 Representing a Bezier in Code
 -----------------------------
@@ -107,7 +113,7 @@ This information is used to generate a curve.
 
 The positioning of the control points
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-:math: `P_0` and :math: `P_3` are simply the start and end coordinates fed into the function. However working our where :math: `P_1` and :math: `P_2` should be takes a little bit more work. 
+The points :math:`P_0` and :math:`P_3` are simply the start and end coordinates fed into the function. However working our where :math:`P_1` and :math:`P_2` should be takes a little bit more work. 
 
 The angle of rotation, plus the variable handle influence variable are used to calculate the change in x and change in y from the start and end position with some simple trigonometry.
 
@@ -133,6 +139,7 @@ Evenly Spaced t Values
 It would seem intuitive that if you wanted to evenly place 9 bricks along the path then you would increment the t value in 8 even steps.
 
 .. code-block:: python
+   
    for i in range(9):
       t = i * (1/8)
       x = brick_path.B_x(t)
@@ -149,10 +156,49 @@ Approximating the Length of a Bezier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The easiest way to evenly space the points along the bezier would be to divide the bezier's length by the design number of bricks. However there is no mathematically simple way to calculate this accurately. Therefore an approximation of the length of the bezier has been used instead.
 
+.. figure::  imgs/length.gif
+   :align:   center
+
+The approximation code was added as a method to the Bezier class in the ``bezier_conversion.py`` file.
+
+.. literalinclude:: dominoes_code/bezier_conversion.py
+   :language: python
+   :pyobject: Bezier.length_approximation
+   :linenos:
+   :lineno-start: 73
+   
+The way this approximation works is to assume that the curve is actually a series of straight lines. The length of these lines are calculated and added together.
+
+The resolution, :math:`R` is used to calculate an even spacing in the t-space. So the points are spaced :math:`\frac{1}{R}` apart.
+
+.. figure::  imgs/length_approximation.png
+   :align:   center
+
+For each point along the path that has been calculated, the distance to the previous point is calculated using simple using simple trigonometry on line 87. This length is added to a running total, so the total length of the curve can be estimated.
+
+The higher the resolution, the more accurate the estimation. However increasing the resolution also increases the running time of the algorithm. For our interpolation code we use a resolution of 150 as it provided a converged value for the length to 3 decimal places. We found this to be a good balance between speed and accuracy.
+
 Utilizing Memoisation to Improve Efficiency
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To place bricks evenly along the path, it was covenient to not only know the total length of the curve. But to be able to specify a distance along the curve and get the x and y coordinates at that position. 
 
-Converting Distance Along Path to Catesean Coordinates
+This could be done by performing the iteration each time a coordinate a certain distance along the path needed to be calculated. However this would've been highly inefficient.
+
+Therefore we utilized memoisation, to create a cache of which distances correspond to which t value. (This t value can then be fed into the ``brick_path.B_x(t)`` and ``brick_path.B_y(t)``methods to get the coordinate values.)
+
+
+.. literalinclude:: dominoes_code/bezier_conversion.py
+   :language: python
+   :lines: 76, 88 - 90
+   :linenos:
+   :lineno-start: 88
+
+In the `length_approximation method` each time a new length is calculated a dictionary called `t_map` is updated. Not only is this dictionary updated with the distance which corresponds with current t value being explored, but all the values of distance that exist between the previously calculated length and the current length to 3 decimal places are stored as keys to that t value.
+
+This has the effect of any distance you look up effectively snapping to the closest t_value which distance has been calulated.
+
+
+Converting Distance Along Path to Cartesean Coordinates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Rotating the Bricks to be Normal to the Path

@@ -11,7 +11,7 @@ Inverse kinematics check
 ---------------------
 To achieve this, we input the necessary pose and hover distance to check whether there is a feasible set of joint angles.
 
-.. literalinclude:: dominoes/domino.py
+.. literalinclude:: dominoes_code/right_placement.py
    :language: python
    :lines: 159
    :linenos:
@@ -24,17 +24,17 @@ During testing we found that the bricks wouldn't knock over reliably on a flat s
 .. figure::  imgs/table_height.png
    :align:   center
    
-.. literalinclude:: dominoes/right_placement.py
+.. literalinclude:: dominoes_code/right_placement.py
    :language: python
-   :lines: 126-144
+   :lines: 130-144
    :linenos:
-   :lineno-start: 126
+   :lineno-start: 130
    
 IK Test
 ---------------------
 We must first input the coordinates and orientation as a pose:
 
-.. literalinclude:: dominoes/domino.py
+.. literalinclude:: dominoes_code/domino.py
    :language: python
    :lines: 196-213
    :linenos:
@@ -42,7 +42,7 @@ We must first input the coordinates and orientation as a pose:
    
 If the coordinate is on the left side, we want to test that with the left side and visa versa with the right arm. If both arms fail for either the hover or place coordinate, the coordinate fails, and so does the current path. 
 
-.. literalinclude:: dominoes/right_placement.py
+.. literalinclude:: dominoes_code/right_placement.py
    :language: python
    :lines: 162-165
    :linenos:
@@ -50,7 +50,7 @@ If the coordinate is on the left side, we want to test that with the left side a
    
 If the initial path has failed we have to rerun the path with a straighter path. We do this by adjusting the handles from the bezier code to produce a different path in ``right_placement.py lines 202-215:
 
-.. literalinclude:: dominoes/right_placement.py
+.. literalinclude:: dominoes_code/right_placement.py
    :language: python
    :lines: 202-215
    :linenos:
@@ -58,7 +58,7 @@ If the initial path has failed we have to rerun the path with a straighter path.
 
 If this still doesn't work after 10 tries it means even a straight line won't work. We have to break out of the loop and retry with new start and end positions.
 
-.. literalinclude:: dominoes/right_placement.py
+.. literalinclude:: dominoes_code/right_placement.py
    :language: python
    :lines: 218-219
    :linenos:
