@@ -21,11 +21,11 @@ Instructions
 .. code-block:: console
     
     $ roslaunch baxter_world baxter_gazebo
-3. Once Gazebo has launched, open a new terminal window and navigate to the folder containing the Dominoes repository code.
+3. Once Gazebo has launched, open a new terminal window and navigate to the folder containing the ``the-coderoom`` repository code.
 
 .. code-block:: console
     
-    $ cd Dominoes
+    $ cd the-coderoom/dominoes
 4. Finally, run the ``right_placement.py`` script and follow the prompts in the terminal to see the domino placing simulation in action.
 
 .. code-block:: console
