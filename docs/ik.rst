@@ -11,7 +11,7 @@ Inverse kinematics check
 ---------------------
 To achieve this, we input the necessary pose and hover distance to check whether there is a feasible set of joint angles.
 
-.. literalinclude:: dominoes_code/domino.py
+.. literalinclude:: dominoes_code/right_placement.py
    :language: python
    :lines: 159
    :linenos:
@@ -26,9 +26,9 @@ During testing we found that the bricks wouldn't knock over reliably on a flat s
    
 .. literalinclude:: dominoes_code/right_placement.py
    :language: python
-   :lines: 126-144
+   :lines: 130-144
    :linenos:
-   :lineno-start: 126
+   :lineno-start: 130
    
 IK Test
 ---------------------
