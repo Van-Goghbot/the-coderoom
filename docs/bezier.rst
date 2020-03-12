@@ -12,7 +12,7 @@ Beziers work by converting a value from 0 and 1 into x and y coordinates. They'r
 
 These control points are used in the following equation:
 
-.. math:: B(t)=\sum_{i=0}^{n} \binom(n, i) (1-t)^{n-i} t^{i) P_{i}
+.. math:: B(t)=\\sum_{i=0}^{n} \\binom(n, i) (1-t)^{n-i} t^{i) P_{i}
 
 Representing a Bezier in Code
 -----------------------------
@@ -39,7 +39,7 @@ The conversion method is called during the instantiation of a Bezier object. It 
 
 These coordinates are converted into Node objects. The node class is very simple, it has two attribute: x and y. It has no method.
 
-Each `Node` object is then appended to a list stored in the `Bezier` attribute `p`.
+Each `Node` object is then appended to a list stored in the ``Bezier`` attribute ``p``. The reason this attribute is called p and not something more explanatory such as point list, is to allow the later functions to read more like the bezier equation outlined above. For example referencing point ``P_2`` can be done using ``Bezier.p[2]`` which reads very similarly making the code more legible.
 
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
