@@ -269,7 +269,7 @@ To make the code a little bit more readble, a Coordinate class was created with 
    :pyobject: Coordinate
    :lineno-start: 4
 
-The calculated poses are used to create new instances of the Coordinate class, and are stored in the ``brick_poses`` list. This is returned to the script which called it. In our case it called by the ``right_placement.py`` script after the user has decided upon the start and end brick position.
+The calculated poses are used to create new instances of the Coordinate class and are stored in the ``brick_poses`` list. This is returned to the script which called it. In our case, it called by the ``right_placement.py`` script after the user has decided upon the start and end brick position.
 
 .. literalinclude:: dominoes_code/bezier_interpolation.py
    :language: python
