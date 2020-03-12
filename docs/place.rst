@@ -2,7 +2,7 @@ Placing
 ====================
 Motion path
 --------------------
-From the safe point, we can use the ``move`` function to position the arm at the hover point, above where the brick needs to be placed. The move function takes the desired pose of the robot, checks the inverse kinematics of that final position and then moves. For the pose we first need to convert from euler angles to quaternions.
+From the safe point, we can use the ``move`` function to position the arm at the hover point, above where the brick needs to be placed. The move function takes the desired pose of the robot, checks the inverse kinematics of that final position and then moves. For the pose, we first need to convert from euler angles to quaternions.
 
 .. figure::  imgs/quaternions.png
    :align:   center
