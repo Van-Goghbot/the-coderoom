@@ -3,7 +3,7 @@ Getting Started
 
 To install and run this projects code on your computer or VM you must:
 
-1. Pull the ``the-coderoom`` repository from Github
+1. Pull the `the-coderoom`_ repository from Github
 2. Follow the instructions below to get the simulation running
 
 We will now walk step by step to go from an empty workspace to a robot that can build a domino path in Gazebo
@@ -35,3 +35,4 @@ Instructions
 .. figure::  imgs/terminator.png
    :align:   center
 
+.. _the-coderoom: https://github.com/Van-Goghbot/the-coderoom
