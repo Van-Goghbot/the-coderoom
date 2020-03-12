@@ -52,7 +52,7 @@ If the coordinate is on the left side, we want to test that with the left side a
    :linenos:
    :lineno-start: 162
    
-If the initial path has failed we have to rerun the path with a straighter path. We do this by adjusting the handles from the bezier code to produce a different path in ``right_placement.py lines 202-215:
+If the initial path has failed we have to rerun the path with a straighter path. We do this by adjusting the handles from the bezier code to produce a different path in ``right_placement.py`` lines 202-215:
 
 .. literalinclude:: dominoes_code/right_placement.py
    :language: python
