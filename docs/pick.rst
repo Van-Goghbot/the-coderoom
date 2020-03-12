@@ -35,7 +35,7 @@ Because we have ordered the coordinates, the only place where the arms may colli
 
 Picking
 ---------------------
-  The picking function can be found at ``line 122 in domino.py``
+The picking function can be found at ``line 102 of domino.py``
 We first want to move the arms to a 'safe point' using joint angles to get to a midpoint which will prevent the arms from getting twisted and thus mitigating redundancies.
 
 .. literalinclude:: dominoes_code/domino.py
@@ -45,13 +45,13 @@ We first want to move the arms to a 'safe point' using joint angles to get to a 
    :lineno-start: 118
    
 The gripper then opens, and moves forward slightly, ready to recieve a brick. To improve the error detection of the robot, we use the IR sensor on the end effector to determine whether it has been handed a brick.
-`Handing DENIRO a brick`_
+`Handing DE-NIRO a brick`_
 
 IR Sensor
 ---------------------
 We achieve this by creating a listener and subscribing to the IR sensor topic for both arms
 
-.. _Handing DENIRO a brick: https://drive.google.com/open?id=1X7xDFg5td2QZFyYkaZnfSWQ3x5a8MqJ3
+.. _Handing DE-NIRO a brick: https://drive.google.com/open?id=1X7xDFg5td2QZFyYkaZnfSWQ3x5a8MqJ3
 
 .. literalinclude:: dominoes_code/domino.py
    :language: python
