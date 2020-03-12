@@ -229,7 +229,7 @@ The calculated spacing is then used to find the x and y coordinates for each bri
    :language: python
    :lines: 53 - 66
    :lineno-start: 53
-   :highlight: 65, 66
+   :emphasize-lines: 65, 66
    :dedent: 1
    
 On lines 65 and 66 a scaling and translation transfomation is applied, this is becuase the Bezier and the Baxter robot have different base coordinate systems and units.
