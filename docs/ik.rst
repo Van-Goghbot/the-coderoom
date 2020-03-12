@@ -61,7 +61,7 @@ If the initial path has failed we have to rerun the path with a straighter path.
    :linenos:
    :lineno-start: 202
 
-If this still doesn't work after 10 tries it means even a straight line won't work. We have to break out of the loop and retry with new start and end positions.
+If this still doesn't work after 10 tries it means even a straight line won't work. We have to break out of the loop and retry with new start and end positions, but this eventuality rarely happens.
 
 .. literalinclude:: dominoes_code/right_placement.py
    :language: python
