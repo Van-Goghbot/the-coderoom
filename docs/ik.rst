@@ -2,7 +2,7 @@ Inverse Kinematics
 =====================
 Overview
 ---------------------
-If the coordinates are run before checking the inverse, the path may fail halfway through. To avoid this, we check the inverse kinematics for each placing point and the hover point above.
+If the coordinates are run before checking the inverse kinematics, the path may fail halfway through. To avoid this, we check the inverse kinematics for each placing point and the hover point above.
 
 .. figure::  imgs/hover.png
    :align:   center
