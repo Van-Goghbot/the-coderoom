@@ -45,7 +45,7 @@ Contributors
 Amy Mather, Euan Hay, Esther Maltby, Alisa Lomax, Saym Hussain
 
 .. _Github repository: https://github.com/Van-Goghbot
-.. _Project overview: https://drive.google.com/open?id=1g-9TisHWX9m03OYFH9l2GGtcYhuyJFod
+.. _Project overview: https://drive.google.com/open?id=1s17ZaASkcstEIvMF2Wn58AcZY-tg5gRG
 .. _Domino placement - Simulation: https://drive.google.com/file/d/1i8YlybJPy28riKpq7beLlXRQaOJQ-tgj/view?usp=sharing
 .. _Domino placement - Real life: https://drive.google.com/file/d/1QDtLKm7E8it-bFPhVYY9rXpznGsEYBhl/view?usp=sharing
 .. _Setting up and running code: https://drive.google.com/open?id=1ikvy-zoK48acajkLAyTWm_Xm91PtloFZ
