@@ -190,11 +190,11 @@ Therefore we utilized memoisation, to create a cache of which distances correspo
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
    :lines: 76 - 90
-   :highlight: 76, 88 - 99
+   :emphasize-lines: 76, 88 - 99
    :linenos:
    :lineno-start: 79
 
-In the `length_approximation method` each time a new length is calculated a dictionary called `t_map` is updated. Not only is this dictionary updated with the distance which corresponds with current t value being explored, but all the values of distance that exist between the previously calculated length and the current length to 3 decimal places are stored as keys to that t value.
+In the ``length_approximation method`` each time a new length is calculated a dictionary called ``t_map`` is updated. Not only is this dictionary updated with the distance which corresponds with current t value being explored, but all the values of distance that exist between the previously calculated length and the current length to 3 decimal places are stored as keys to that ``t`` value.
 
 This has the effect of any distance you look up effectively snapping to the closest t_value which distance has been calulated.
 
@@ -220,7 +220,7 @@ The calculated spacing is then used to find the x and y coordinates for each bri
 .. literalinclude:: dominoes_code/bezier_interpolation.py
    :language: python
    :lines: 53 - 66
-   :highlight: 65 - 66
+   :emphasize-lines: 65 - 66
    :lineno-start: 53
 
 On lines 53 and 56 a scaling and tranlation transfomation is applied, this is becuase the Bezier and the Baxter robot have different base coordinate systems and units.
@@ -236,7 +236,7 @@ Calculating Tangent Line
 ^^^^^^^^^^^^^^^^^^^^^^^^
 To overcome this issue the tangent to the curve at each coordinate is calculated, and the bricks are then placed so they're normal to the curve.
 
-The tangent is calculated by deviating very slighlty from the specified t value using the variable ``dt``.
+The tangent is calculated by deviating very slighlty from the specified t value using the variable ``dt``. 
 
 
 Converting to Rotation
