@@ -39,6 +39,7 @@ The instantiation of a Bezier object takes a string input which can be copied fr
    :pyobject: Bezier.__init__
    :linenos:
    :lineno-start: 11
+   :dedent: 1
 
 NOTE: Alternatively you can easily construct your own string, as it is essentially just a list of coordinates in the following format:
 
@@ -63,6 +64,7 @@ Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribu
    :pyobject: Bezier.conversion
    :linenos:
    :lineno-start: 16
+   :dedent: 4
    
 B_x
 ^^^
@@ -73,6 +75,7 @@ This method takes a t value and returns the corresponding x coordinate. The vari
    :pyobject: Bezier.B_x
    :linenos:
    :lineno-start: 59
+   :dedent: 1
 
 The code is the equvilent of the following mathematical expression:
 
@@ -87,6 +90,7 @@ This method takes a t value and returns the corresponding y coordinate. The vari
    :pyobject: Bezier.B_y
    :linenos:
    :lineno-start: 66
+   :dedent: 1
 
 The code is the equvilent of the following mathematical expression:
 
@@ -166,6 +170,7 @@ The approximation code was added as a method to the Bezier class in the ``bezier
    :pyobject: Bezier.length_approximation
    :linenos:
    :lineno-start: 73
+   :dedent: 1
    
 The way this approximation works is to assume that the curve is actually a series of straight lines. The length of these lines are calculated and added together.
 
@@ -193,6 +198,7 @@ Therefore we utilized memoisation, to create a cache of which distances correspo
    :emphasize-lines: 76, 88-99
    :linenos:
    :lineno-start: 79
+   :dedent: 3
 
 In the ``length_approximation method`` each time a new length is calculated a dictionary called ``t_map`` is updated. Not only is this dictionary updated with the distance which corresponds with current t value being explored, but all the values of distance that exist between the previously calculated length and the current length to 3 decimal places are stored as keys to that ``t`` value.
 
@@ -207,6 +213,7 @@ First of all the brick path's length is calculated using the method descibed abo
    :language: python
    :lines: 42
    :lineno-start: 42
+   :dedent: 1
 
 Then an ideal spacing is defined, in our case this is 14 as this corresponds to the length of a toppled domino. This spacing is used to determine how many bricks will fit along that path. Then, as it is unlikely that the ideal spacing will divide exactly into the total length, the actual spacing is calculated by dividing the path length by the number of bricks being used.
 
@@ -214,6 +221,7 @@ Then an ideal spacing is defined, in our case this is 14 as this corresponds to 
    :language: python
    :lines: 46 - 49
    :lineno-start: 46
+   :dedent: 1
 
 The calculated spacing is then used to find the x and y coordinates for each brick. The desired distance along the path is looked up in the t_map, and the outputted t value is used to calulate the x and y values.
 
@@ -221,9 +229,10 @@ The calculated spacing is then used to find the x and y coordinates for each bri
    :language: python
    :lines: 53 - 66
    :lineno-start: 53
-   :emphasize-lines: 53, 56
+   :highlight: 65, 66
+   :dedent: 1
    
-On lines 53 and 56 a scaling and translation transfomation is applied, this is becuase the Bezier and the Baxter robot have different base coordinate systems and units.
+On lines 65 and 66 a scaling and translation transfomation is applied, this is becuase the Bezier and the Baxter robot have different base coordinate systems and units.
 
 This method successfully evenly spaces the bricks. However as can be seen, this is still not a functional domino path, as all the bricks are facing the same direction.
 
@@ -242,6 +251,7 @@ The tangent line is calculated by deviating very slightly from the specified t v
    :language: python
    :lines: 68-71
    :lineno-start: 68
+   :dedent: 2
 
 
 The value of ``dt`` is set to 0.01 which we found to work well.
@@ -250,6 +260,7 @@ The value of ``dt`` is set to 0.01 which we found to work well.
    :language: python
    :lines: 44
    :lineno-start: 44
+   :dedent: 1
 
 To make the code a little bit more readble, a Coordinate class was created with x, y and rotation attributes.
 
@@ -264,6 +275,7 @@ The calculated poses are used to create new instances of the Coordinate class, a
    :language: python
    :lines: 75 - 79
    :lineno-start: 75
+   :dedent: 1
 
 So now the final output is a valid domino path which is automatically generated from any start parameters. *happy dance*
 
