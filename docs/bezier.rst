@@ -5,9 +5,9 @@ In order to solve the problem of generating a dynamic placement path for the dom
 .. figure::  imgs/adaptive_path.gif
    :align:   center
 
-The ability to generate different curves based upon two positions and orientations was well suited to our project. Additionally the ability to adjust how much influence the start and end orientations have on the curve proved very helpful when automating the adaption of the curve if an inverse kinematics solution couldn't be found. 
+The ability to generate different curves based on two positions and orientations was well suited to our project. Additionally, the ability to adjust how much influence the start and end orientations have on the curve proved very helpful when automating the adaption of the curve if an inverse kinematics solution couldn't be found. 
 
-The implementation for this part of the project is split into two python files, ``bezier_conversion.py`` and ``bezier_interpolation.py``. Where bezier conversion contains the code that defines the Bezier class we created and bezier interpolation uses this class, and the placed brick positions to generate the positions and orientations of the bricks go inbetween.
+The implementation for this part of the project is split into two python files, ``bezier_conversion.py`` and ``bezier_interpolation.py``. Bezier conversion contains the code that defines the Bezier class we created. Bezier interpolation uses this class, and the placed brick positions to generate the positions and orientations of the bricks go inbetween.
 
 T - Space vs Cartesian Space
 ----------------------------
@@ -57,7 +57,7 @@ These coordinates are converted into ``Node`` objects. The node class is very si
    :lineno-start: 3
 
 
-Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribute ``p``. The reason this attribute is called p and not something more explanatory such as point list, is to allow the later functions to read more like the bezier equation outlined above. For example referencing point :math:`P_2` can be done using ``Bezier.p[2]`` which reads very similarly making the code more legible.
+Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribute ``p``. The reason this attribute is called p and not something more explanatory such as point list is to allow the later functions to read more like the Bezier equation outlined above. For example, referencing point :math:`P_2` can be done using ``Bezier.p[2]``, which reads very similarly making the code more legible.
 
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
@@ -68,7 +68,7 @@ Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribu
    
 B_x
 ^^^
-This method takes a t value and returns the corresponding x coordinate. The variables ``c0`` - ``c1`` are the different sections of the expanded form of the Bezier equation shown above.
+This method takes a ``t`` value and returns the corresponding x coordinate. The variables ``c0`` - ``c1`` are the different sections of the expanded form of the Bezier equation shown above.
 
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
@@ -98,7 +98,7 @@ The code is the equivalent of the following mathematical expression:
 
 Creating a Bezier from the Start and End Bricks
 -----------------------------------------------
-The code descibed below is all from the ``bezier_interpolation.py`` script unless otherwise stated. This function defined in this script takes the placed brick's positions and orientations and returns a list of poses for all the bricks that need to be placed inbetween them.
+The code described below is all from the ``bezier_interpolation.py`` script unless otherwise stated. This function defined in this script takes the placed brick's positions and orientations and returns a list of poses for all the bricks that need to be placed inbetween them.
 
 In order to use the Bezier class, ``bezier_conversion.py`` is imported at the beginning of the code.
 
@@ -117,7 +117,7 @@ This information is used to generate a curve.
 
 The positioning of the control points
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The points :math:`P_0` and :math:`P_3` are simply the start and end coordinates fed into the function. However working our where :math:`P_1` and :math:`P_2` should be takes a little bit more work. 
+The points :math:`P_0` and :math:`P_3` are simply the start and end coordinates fed into the function. However, working out where :math:`P_1` and :math:`P_2` should be takes a little bit more work. 
 
 The angle of rotation, plus the variable handle influence variable are used to calculate the change in x and change in y from the start and end position with some simple trigonometry.
 
@@ -149,7 +149,7 @@ It would seem intuitive that if you wanted to evenly place 9 bricks along the pa
       x = brick_path.B_x(t)
       y = brick_path.B_y(t)
 
-However due to the relationship t has to the curvature of the path, you actually get something that looks more like this.
+However, due to the relationship t has to the curvature of the path, you actually get something that looks more like this.
 
 .. figure::  imgs/uneven.png
    :align:   center
@@ -158,7 +158,7 @@ And whilst it is good enough for creating a nice pattern, in the case of dominoe
 
 Approximating the Length of a Bezier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The easiest way to evenly space the points along the bezier would be to divide the bezier's length by the design number of bricks. However there is no mathematically simple way to calculate this accurately. Therefore an approximation of the length of the bezier has been used instead.
+The easiest way to evenly space the points along the bezier would be to divide the bezier's length by the design number of bricks. However, there is no mathematically simple way to calculate this accurately. Therefore an approximation of the length of the bezier has been used instead.
 
 .. figure::  imgs/length.gif
    :align:   center
@@ -172,7 +172,7 @@ The approximation code was added as a method to the Bezier class in the ``bezier
    :lineno-start: 73
    :dedent: 1
    
-The way this approximation works is to assume that the curve is actually a series of straight lines. The length of these lines are calculated and added together.
+The way the approximation works is to assume that the curve is actually a series of straight lines. The lengths of these lines are calculated and added together.
 
 The resolution, :math:`R` is used to calculate an even spacing in the t-space. So the points are spaced :math:`\frac{1}{R}` apart.
 
@@ -181,13 +181,13 @@ The resolution, :math:`R` is used to calculate an even spacing in the t-space. S
 
 For each point along the path that has been calculated, the distance to the previous point is calculated using simple using simple trigonometry on line 87. This length is added to a running total, so the total length of the curve can be estimated.
 
-The higher the resolution, the more accurate the estimation. However increasing the resolution also increases the running time of the algorithm. For our interpolation code we use a resolution of 150 as it provided a converged value for the length to 3 decimal places. We found this to be a good balance between speed and accuracy.
+The higher the resolution, the more accurate the estimation. However, increasing the resolution also increases the running time of the algorithm. For our interpolation code, we use a resolution of 150 as it provided a converged value for the length to 3 decimal places. We found this to be a good balance between speed and accuracy.
 
 Utilizing Memoisation to Improve Efficiency
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To place bricks evenly along the path, it was covenient to not only know the total length of the curve. But to be able to specify a distance along the curve and get the x and y coordinates at that position. 
+To place bricks evenly along the path, it was convenient to not only know the total length of the curve. But to be able to specify a distance along the curve and get the x and y coordinates at that position. 
 
-This could be done by performing the iteration each time a coordinate a certain distance along the path needed to be calculated. However this would've been highly inefficient.
+This could be done by performing the iteration each time a coordinate a certain distance along the path needed to be calculated. However, this would've been highly inefficient.
 
 Therefore we utilized memoisation, to create a cache of which distances correspond to which t value. (This t value can then be fed into the ``brick_path.B_x(t)`` and ``brick_path.B_y(t)`` methods to get the coordinate values.)
 
@@ -200,14 +200,14 @@ Therefore we utilized memoisation, to create a cache of which distances correspo
    :lineno-start: 79
    :dedent: 3
 
-In the ``length_approximation method`` each time a new length is calculated a dictionary called ``t_map`` is updated. Not only is this dictionary updated with the distance which corresponds with current t value being explored, but all the values of distance that exist between the previously calculated length and the current length to 3 decimal places are stored as keys to that ``t`` value.
+In the ``length_approximation method`` each time a new length is calculated, a dictionary called ``t_map`` is updated. Not only is this dictionary updated with the distance which corresponds with current t value being explored, but all the values of distance that exist between the previously calculated length and the current length to 3 decimal places are stored as keys to that ``t`` value.
 
-This has the effect of any distance you look up effectively snapping to the closest t_value which distance has been calulated.
+This has the effect of any distance you look up effectively snapping to the closest t_value whoms distance has been calulated.
 
 
-Converting Distance Along Path to Cartesean Coordinates
+Converting Distance Along Path to Cartesian Coordinates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-First of all the brick path's length is calculated using the method descibed above.
+First of all the brick path's length is calculated using the method described above.
 
 .. literalinclude:: dominoes_code/bezier_interpolation.py
    :language: python
@@ -223,7 +223,7 @@ Then an ideal spacing is defined, in our case this is 14 as this corresponds to 
    :lineno-start: 46
    :dedent: 1
 
-The calculated spacing is then used to find the x and y coordinates for each brick. The desired distance along the path is looked up in the t_map, and the outputted t value is used to calulate the x and y values.
+The calculated spacing is then used to find the x and y coordinates for each brick. The desired distance along the path is looked up in the t_map, and the outputted t value is used to calculate the x and y values.
 
 .. literalinclude:: dominoes_code/bezier_interpolation.py
    :language: python
@@ -232,9 +232,9 @@ The calculated spacing is then used to find the x and y coordinates for each bri
    :emphasize-lines: 65, 66
    :dedent: 1
    
-On lines 65 and 66 a scaling and translation transfomation is applied, this is becuase the Bezier and the Baxter robot have different base coordinate systems and units.
+On lines 65 and 66, a scaling and translation transfomation are applied. This is becuase the Bezier and the Baxter robot have different base coordinate systems and units.
 
-This method successfully evenly spaces the bricks. However as can be seen, this is still not a functional domino path, as all the bricks are facing the same direction.
+This method successfully evenly spaces the bricks. However, as can be seen, this is still not a functional domino path, since all the bricks are facing the same direction.
 
 .. figure::  imgs/even_but_flat.png
    :align:   center
