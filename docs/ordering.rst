@@ -8,7 +8,7 @@ Code Overview
 --------------------
 The code for ordering code is relatively simple, we first need to divide the coordinate list into coordinates covered by the left arm and those covered by the right.
 
-.. literalinclude:: dominoes/right_placement.py
+.. literalinclude:: dominoes_code/right_placement.py
    :language: python
    :pyobject: None
    :linenos:
@@ -16,7 +16,7 @@ The code for ordering code is relatively simple, we first need to divide the coo
 
 Both lists need to be sorted into ascending order, the right list is then reversed, arranging the both sets of coordinates around 0.
 
-.. literalinclude:: dominoes/right_placement.py
+.. literalinclude:: dominoes_code/right_placement.py
    :language: python
    :pyobject: None
    :linenos:
