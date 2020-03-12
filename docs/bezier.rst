@@ -5,7 +5,7 @@ Bezier Curve
 ============
 In developing the placing sequence, the group implemented an SVG code to dynamically place each brick after the pick sequence. The SVG uses a bezier curve with two handles; the curvature of the SVG is determined by the length of the handles.
 
-T - Space vs Cartesean Space
+T - Space vs Cartesian Space
 ----------------------------
 Beziers work by converting a value from 0 and 1 into x and y coordinates. They're defined by 4 control points.
 [insert image of control points]
