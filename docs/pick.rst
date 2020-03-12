@@ -11,6 +11,7 @@ We achieve this by using the subprocess module in Python to run two scripts simu
 
 .. literalinclude:: dominoes_code/right_placement.py
    :language: python
+   :dedent: 3
    :lines: 182
    :linenos:
    :lineno-start: 182
@@ -19,6 +20,7 @@ A new node is created and the coordinates can then be interpreted.
 
 .. literalinclude:: dominoes_code/left_placement.py
    :language: python
+   :dedent: 1
    :lines: 30-36
    :linenos:
    :lineno-start: 30
@@ -27,6 +29,7 @@ Then we can just give the same command to the left and right arms; pick and plac
 
 .. literalinclude:: dominoes_code/left_placement.py
    :language: python
+   :dedent: 1
    :lines: 57-62
    :linenos:
    :lineno-start: 57
@@ -40,6 +43,7 @@ We first want to move the arms to a 'safe point' using joint angles to get to a 
 
 .. literalinclude:: dominoes_code/domino.py
    :language: python
+   :dedent: 2
    :lines: 118-119
    :linenos:
    :lineno-start: 118
@@ -61,6 +65,7 @@ We achieve this by creating a listener and subscribing to the IR sensor topic fo
    
 .. literalinclude:: dominoes_code/domino.py
    :language: python
+   :dedent: 1
    :lines: 105-113
    :linenos:
    :lineno-start: 105
@@ -69,6 +74,7 @@ The readings from this topic can then be used within the ``pick`` function to de
 
 .. literalinclude:: dominoes_code/domino.py
    :language: python
+   :dedent: 2
    :lines: 124-127
    :linenos:
    :lineno-start: 124
