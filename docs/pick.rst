@@ -20,8 +20,8 @@ A new node is created and the coordinates can then be interpreted.
 ::
 Then we can just give the same command to the left and right arms; pick and place the bricks in the specified coordinates.
 ::
-    for coord in left:
-        domino.pickandplace('l',left_pnp,coord[1],coord[0],0.24,0,3.14,coord[2]+3.14/2,0.1,movement_count)
+    for coord in right:
+        domino.pickandplace('r',right_pnp,coord[1],coord[0],adjusted_z,incline_angle,math.pi,coord[2]+math.pi/2,hover,movement_count)
 ::
 Because we have ordered the coordinates, the only place where the arms may collide is when they are both placing bricks in the centre of the table, at the start of the task. To avoid this, we simply use the ``rospy.sleep`` command to stall the right arm so that the left arm can place and move out of the way beforehand.
 
