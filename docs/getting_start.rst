@@ -3,10 +3,10 @@ Getting Started
 
 To install and run this projects code on your computer or VM you must:
 
-1. Pull the Dominoes repository from Github
+1. Pull the ``the-coderoom`` repository from Github
 2. Follow the instructions below to get the simulation running
 
-We will now walk step by step to go from an empty workspace to a robot that can build a wall in Gazebo
+We will now walk step by step to go from an empty workspace to a robot that can build a domino path in Gazebo
 
 Instructions
 -------------------------
@@ -21,7 +21,7 @@ Instructions
 .. code-block:: console
     
     $ roslaunch baxter_world baxter_gazebo
-3. Once Gazebo has launched, open a new terminal window and navigate to the folder containing the Dominoes reposotitory code.
+3. Once Gazebo has launched, open a new terminal window and navigate to the folder containing the Dominoes repository code.
 
 .. code-block:: console
     
