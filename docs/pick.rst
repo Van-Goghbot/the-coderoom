@@ -1,5 +1,9 @@
 Picking
 =======================
+Overview
+-----------------------
+Initially for the picking motion, we wanted to pick the bricks up from a free-standing position and iterate through. But through testing on the physical robot, we encountered too many issues with redundancies and instead decided to focus on the motion planning for the placement of the bricks. As such, we decided to feed the robot bricks manually which had two benefits: Firstly, the user has more of an interaction with the robot rather than just watching it until it finishes, and secondly, feeding the bricks allows for some uncertainty and error to enter the process, allowing for a better test of our project's error detection.
+
 Dual arms
 -----------------------
 The first thing we want to do when we've selected a path is to send the coordinates to both arms so that we can run both arms simultaneously, improving the speed and efficiency of the task.
