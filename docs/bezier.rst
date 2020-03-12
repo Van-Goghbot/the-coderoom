@@ -189,8 +189,8 @@ Therefore we utilized memoisation, to create a cache of which distances correspo
 
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
-   :lines: 76 - 90
-   :emphasize-lines: 76, 88 - 99
+   :lines: 76-90
+   :emphasize-lines: 76, 88-99
    :linenos:
    :lineno-start: 79
 
@@ -220,7 +220,6 @@ The calculated spacing is then used to find the x and y coordinates for each bri
 .. literalinclude:: dominoes_code/bezier_interpolation.py
    :language: python
    :lines: 53 - 66
-   :emphasize-lines: 65 - 66
    :lineno-start: 53
 
 On lines 53 and 56 a scaling and tranlation transfomation is applied, this is becuase the Bezier and the Baxter robot have different base coordinate systems and units.
@@ -237,6 +236,7 @@ Calculating Tangent Line
 To overcome this issue the tangent to the curve at each coordinate is calculated, and the bricks are then placed so they're normal to the curve.
 
 The tangent is calculated by deviating very slighlty from the specified t value using the variable ``dt``. 
+
 
 
 Converting to Rotation
