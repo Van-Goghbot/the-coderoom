@@ -9,9 +9,9 @@ Introduction
 
 Overview
 -------------
-This project aimed to use 3D Kinematics principles to get a robot to plan and lay out custom dominoes paths.  Foam bricks were used as the dominoes, and we wanted the robot to collaborate with you to decide upon a path, leaving the fun of knocking over the path to you. 
+This project aimed to use 3D Kinematics principles to get a robot to plan and lay out custom domino paths. Foam bricks were used as the dominoes, and we wanted the robot to collaborate with you to decide upon a path, leaving the fun of knocking over the path to you. 
 
-We had a choice of two robots, the Baxter robot and the Panda robot. We decided that Baxter robot, known familiarly as DE-NIRO (Design Engineering Natural Interaction RObot),  would be the best choice as our desired task required a large workspace that the Panda robot could not reach and because DE-NIRO has two arms enabling  the sequence to be completed faster. Risk minimisation was also implemented to add robustness. This enabled DE-NIRO to place the bricks from the inside out with a delay between the arms to avoid collision.
+We had a choice of two robots: the Baxter robot and the Panda robot. We decided that Baxter robot, known familiarly as DE-NIRO (Design Engineering Natural Interaction RObot),  would be the best choice as our desired task required a large workspace that the Panda robot could not reach and because DE-NIRO has two arms enabling  the sequence to be completed faster. Risk minimisation was also implemented to add robustness. This enabled DE-NIRO to place the bricks from the inside out with a delay between the arms to avoid collision.
  
 Videos
 -------------
