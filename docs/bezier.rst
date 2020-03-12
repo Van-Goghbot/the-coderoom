@@ -95,7 +95,7 @@ Creating a Bezier from the Start and End Bricks
 .. figure::  imgs/get_angles.png
    :align:   center
    
-.. figure::  imgs/curvey_boi.png
+.. figure::  imgs/curvy_boi.png
    :align:   center
 
 Evenly Spacing the Bricks
