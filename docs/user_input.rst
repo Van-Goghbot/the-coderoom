@@ -4,11 +4,11 @@ User Input
 
 Overview
 ------------------------
-We want to take user input for the start and end positions of the path which will allow us to define the curve for the dominoes to be placed on.
+We want to take the user's input for the start and end positions of the path which will allow us to define the curve for the dominoes to be placed on.
 
 Code overview
 ------------------------
-We determine the start and end points by creating a listener for the left and right arms. A tranform listener is first initialised with a rate of 10 refreshes per second.
+We determine the start and end points by creating a listener for the left and right arms. A transform listener is first initialised with a rate of 10 refreshes per second.
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
@@ -16,7 +16,7 @@ We determine the start and end points by creating a listener for the left and ri
    :linenos:
    :lineno-start: 5
         
-For our pusposes, we only need the x,y coordinates (to determine where on the table it will be positioned) and the yaw angle (to determine the placement orientation).
+For our purposes we only need the x,y coordinates, to determine where on the table it will be positioned, and the yaw angle, to determine the placement orientation.
 
 .. figure::  imgs/listener.png
    :align:   center
@@ -30,7 +30,7 @@ As such, we use the ``lookupTransform`` function from the tf module, allowing us
    :linenos:
    :lineno-start: 15
 
-We only want to record the coordinates and orientation when the user is ready, so the program waits until it recieves user input:
+We only want to record the coordinates and orientation when the user is ready, so the program waits until it receives user input:
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
@@ -39,7 +39,7 @@ We only want to record the coordinates and orientation when the user is ready, s
    :linenos:
    :lineno-start: 26
             
-Finally, we want to convert these angles from quaternions to radians for the sake of readibility
+Finally, we want to convert these angles from quaternions to radians for the sake of readibility.
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
