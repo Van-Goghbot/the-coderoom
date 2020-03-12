@@ -3,21 +3,24 @@ import rospy
 import tf
 
 def get_coordinates():
-	#rospy.init_node('example_tf_listener')
+	#Create a listener to take the position and orientation of the end effectors
 	listener = tf.TransformListener()
-	rate = rospy.Rate(10.0)
+	rate = rospy.Rate(10.0) #Refresh 10 times a second
 
 	translations = []
 	angles = []
 
-	quantity = 0
+	quantity = 0 #How many times do we want to record a reading
 	while not rospy.is_shutdown() and quantity != 2:
 		try:
+			#Take the position and rotation of both arms
 			(l_trans,l_rot) = listener.lookupTransform('left_gripper', 'base', rospy.Time(0))
 			print l_trans,l_rot
 			(r_trans,r_rot) = listener.lookupTransform('right_gripper', 'base', rospy.Time(0))
 		except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
 			continue
+
+		#Wait for user input
 		ready = raw_input('Are you ready to record? [Y/N]: ').upper()
 		
 		if ready == 'Y':
@@ -29,8 +32,10 @@ def get_coordinates():
 			Translation = trans
 			Quaternion = rot
 			Angle = tf.transformations.euler_from_quaternion(rot)
+
 			translations.append(trans)
 			angles.append(tf.transformations.euler_from_quaternion(rot))
+
 			print("Translation: ", Translation)
 			print("Quaternion: ", Quaternion)
 			print("Angles: ", Angle)
