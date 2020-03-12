@@ -25,24 +25,24 @@ As such, we use the ``lookupTransform`` function from the tf module, allowing us
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
-   :lines: 14-20
+   :lines: 15-21
    :linenos:
-   :lineno-start: 14
+   :lineno-start: 15
 
 We only want to record the coordinates and orientation when the user is ready, so the program waits until it recieves user input:
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
-   :lines: 25-28
+   :lines: 26-29
    :linenos:
-   :lineno-start: 25
+   :lineno-start: 26
             
 Finally, we want to convert these angles from quaternions to radians for the sake of readibility
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
-   :lines: 31-36
+   :lines: 32-37
    :linenos:
-   :lineno-start: 31
+   :lineno-start: 32
     
 These values for the start and end positions are now ready to produce a bezier curve!
