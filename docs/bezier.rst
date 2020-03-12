@@ -90,6 +90,14 @@ Creating a Bezier from the Start and End Bricks
 -----------------------------------------------
 The code descibed below is all from the ``bezier_interpolation.py`` script unless otherwise stated. This function defined in this script takes the placed brick's positions and orientations and returns a list of poses for all the bricks that need to be placed inbetween them.
 
+In order to use the Bezier class, ``bezier_conversion.py`` is imported at the beginning of the code.
+
+.. literalinclude:: dominoes_code/bezier_interpolation.py
+   :language: python
+   :lines: 2
+   :linenos:
+   :lineno-start: 2
+
 .. figure::  imgs/bricks_to_curvy_boi.png
    :align:   center
 
@@ -99,14 +107,21 @@ This information is used to generate a curve.
 
 The positioning of the control points
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-P0 and P3 are simply the start and end coordinates fed into the function. However working our where P1 and P2 should be takes a little bit more work.
+P0 and P3 are simply the start and end coordinates fed into the function. However working our where P1 and P2 should be takes a little bit more work. The angle of rotation, plus the variable handle influence variable are used to calculate the change in x and change in y from the start and end position with some simple trigonometry.
 
-.. literalinclude:: dominoes_code/bezier_conversion.py
+.. literalinclude:: dominoes_code/bezier_interpolation.py
    :language: python
-   :lines: 13-25
+   :lines: 13-37
    :linenos:
-   :lineno-start: 66
+   :lineno-start: 13
 
+These coordinates are then fed into a string variable called ``bezier_string`` which is consitent with the XML standard for representing Bezier curves. The variable ``bezier_string`` is passed as an argument in the instantiation of a new Bezier object. This means that we can now calculate the x and y coordinates of every point along the generated path.
+
+.. literalinclude:: dominoes_code/bezier_interpolation.py
+   :language: python
+   :lines: 39 - 41
+   :linenos:
+   :lineno-start: 39
 
 Evenly Spacing the Bricks
 -------------------------
