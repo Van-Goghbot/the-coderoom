@@ -35,16 +35,16 @@ Presentation
 `Presentation slides`_
 
 Github
--------------
+-------
+The fully commented and working code can be found `here <https://github.com/Van-Goghbot/the-coderoom/dominoes>`_.
 
-`Github repository`_
+To see the version and commit history of the code please look `here <https://github.com/Van-Goghbot/the-coderoom-dominoes>`_, but it doesn't have the most recent comments and includes files which are no longer in use.
 
 Contributors
 -------------
 
 Amy Mather & Euan Hay with some help from Esther Maltby, Alisa Lomax, Saym Hussain
 
-.. _Github repository: https://github.com/Van-Goghbot
 .. _Project overview: https://youtu.be/HDAchGnagOo
 .. _Domino placement - Simulation: https://drive.google.com/file/d/1i8YlybJPy28riKpq7beLlXRQaOJQ-tgj/view?usp=sharing
 .. _Domino placement - Real life: https://drive.google.com/file/d/1QDtLKm7E8it-bFPhVYY9rXpznGsEYBhl/view?usp=sharing
