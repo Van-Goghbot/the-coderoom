@@ -25,6 +25,7 @@ As such, we use the ``lookupTransform`` function from the tf module, allowing us
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
+   :dedent: 2
    :lines: 15-21
    :linenos:
    :lineno-start: 15
@@ -33,6 +34,7 @@ We only want to record the coordinates and orientation when the user is ready, s
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
+   :dedent: 2
    :lines: 26-29
    :linenos:
    :lineno-start: 26
@@ -41,6 +43,7 @@ Finally, we want to convert these angles from quaternions to radians for the sak
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
+   :dedent: 3
    :lines: 32-37
    :linenos:
    :lineno-start: 32
