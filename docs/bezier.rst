@@ -1,21 +1,26 @@
-.. toctree::
-   :maxdepth: 2
-
 Bezier Curve
 ============
-In developing the placing sequence, the group implemented an SVG code to dynamically place each brick after the pick sequence. The SVG uses a bezier curve with two handles; the curvature of the SVG is determined by the length of the handles.
+In order to solve the problem of generating a dynamic placement path for the dominoes the Bezier format of representing curves was ideal. 
+
+[insert gif of adaptive path control]
+
+The ability to generate different curves based upon two positions and orientaions was well suited to our project. Additionally the abilty to adjust how much influence the start and end orientations have on the curve proved very helpful when automating the adaption of the curve if an inverse kinematics solution couldn't be found. 
+
+The implementation for this part of the project is split into two python files, ``bezier_conversion.py`` and ``bezier_interpolation.py``. Where bezier conversion contains the code that defines the Bezier class we created and bezier interpolation uses this class, and the placed brick positions to generate the positions and orientations of the bricks go inbetween.
 
 T - Space vs Cartesian Space
 ----------------------------
 Beziers work by converting a value from 0 and 1 into x and y coordinates. They're defined by 4 control points.
+
 [insert image of control points]
 
 These control points are used in the following equation:
 
+.. math:: B(t)=\sum_{i=0}^{n} {}_n \mathrm{ C }_i (1-t)^{n-i} t^{i} P_{i}
 
 Representing a Bezier in Code
 -----------------------------
-All of the code in this section is from the `bezier_conversion.py` file.
+All of the code in this section is from the ``bezier_conversion.py`` file. The line numbers of the following code snippets correspond to their position within this file. 
 
 The Bezier Class
 ^^^^^^^^^^^^^^^^
@@ -26,8 +31,8 @@ The instantiation of a Bezier object takes a string input which can be copied fr
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
    :pyobject: Bezier.__init__
-   :lineos:
-   :lineno-start: 9
+   :linenos:
+   :lineno-start: 11
 
 NOTE: Alternatively you can easily construct your own string, as it is essentially just a list of coordinates in the following format:
 
@@ -36,15 +41,50 @@ Conversion
 ^^^^^^^^^^^
 The conversion method is called during the instantiation of a Bezier object. It iterates through the characters in the inputted string and extracts the coordinates from it.
 
-These coordinates are converted into Node objects. The node class is very simple, it has two attribute: x and y. It has no method.
+These coordinates are converted into ``Node`` objects. The node class is very simple, it has two attribute: x and y. It has no methods other than ``__init__``.
 
-Each `Node` object is then appended to a list stored in the `Bezier` attribute `p`.
+.. literalinclude:: dominoes_code/bezier_conversion.py
+   :language: python
+   :pyobject: Node
+   :linenos:
+   :lineno-start: 3
+
+
+Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribute ``p``. The reason this attribute is called p and not something more explanatory such as point list, is to allow the later functions to read more like the bezier equation outlined above. For example referencing point ``P_2`` can be done using ``Bezier.p[2]`` which reads very similarly making the code more legible.
 
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
    :pyobject: Bezier.conversion
-   :lineos:
+   :linenos:
    :lineno-start: 16
+   
+B_x
+^^^
+This method takes a t value and returns the corresponding x coordinate. The variables ``c0`` - ``c1`` are the different sections of the expanded form of the Bezier equation shown above.
+
+.. literalinclude:: dominoes_code/bezier_conversion.py
+   :language: python
+   :pyobject: Bezier.B_x
+   :linenos:
+   :lineno-start: 59
+
+The code is the equvilent of the following mathematical expression:
+
+.. math:: B_x(t)=(1-t)^{3} P_{0x} + 3(1-t)^{2} t P_{1x} + 3(1-t) t^{2} P_{2x} + t^{3} P_{3x}
+
+B_y
+^^^
+This method takes a t value and returns the corresponding y coordinate. The variables ``c0`` - ``c1`` are the different sections of the expanded form of the Bezier equation shown above.
+
+.. literalinclude:: dominoes_code/bezier_conversion.py
+   :language: python
+   :pyobject: Bezier.B_y
+   :linenos:
+   :lineno-start: 66
+
+The code is the equvilent of the following mathematical expression:
+
+.. math:: B_y(t)=(1-t)^{3} P_{0y} + 3(1-t)^{2} t P_{1y} + 3(1-t) t^{2} P_{2y} + t^{3} P_{3y}
 
 Creating a Bezier from the Start and End Bricks
 -----------------------------------------------
