@@ -2,7 +2,7 @@ Picking
 =======================
 Overview
 -----------------------
-Initially for the picking motion, we wanted to pick the bricks up from a free-standing position and iterate through. But through testing on the physical robot, we encountered too many issues with redundancies and instead decided to focus on the motion planning for the placement of the bricks. As such, we decided to feed the robot bricks manually which had two benefits: Firstly, the user has more of an interaction with the robot rather than just watching it until it finishes, and secondly, feeding the bricks allows for some uncertainty and error to enter the process, allowing for a better test of our project's error detection.
+Initially, for the picking motion, we wanted to pick the bricks up from a free-standing position and iterate through. But through testing on the physical robot, we encountered too many issues with redundancies and instead decided to focus on the motion planning for the placement of the bricks. As such, we decided to feed the robot bricks manually which had two benefits: firstly, the user has more of an interaction with the robot rather than just watching it until it finishes, and secondly, feeding the bricks allows for some uncertainty and error to enter the process, allowing for a better test of our project's error detection.
 
 Dual arms
 -----------------------
@@ -38,12 +38,12 @@ Then we can just give the same command to the left and right arms; pick and plac
    :linenos:
    :lineno-start: 57
    
-Because we have ordered the coordinates, the only place where the arms may collide is when they are both placing bricks in the centre of the table, at the start of the task. To avoid this, we simply use the ``rospy.sleep`` command to stall the right arm so that the left arm can place and move out of the way beforehand.
+Because we have ordered the coordinates, the only place where the arms may collide is at the start of the task when they are both placing bricks at the centre of the table. To avoid this, we simply use the ``rospy.sleep`` command to stall the right arm so that the left arm can place and move out of the way beforehand.
 
 Picking
 ---------------------
 The picking function can be found at ``line 102 of domino.py``
-We first want to move the arms to a 'safe point' using joint angles to get to a midpoint which will prevent the arms from getting twisted and thus mitigating redundancies.
+We first want to move the arms to a 'safe point' using joint angles to get to a midpoint, which will prevent the arms from getting twisted and thus mitigating redundancies.
 
 .. literalinclude:: dominoes_code/domino.py
    :language: python
@@ -52,7 +52,7 @@ We first want to move the arms to a 'safe point' using joint angles to get to a 
    :linenos:
    :lineno-start: 118
    
-The gripper then opens, and moves forward slightly, ready to recieve a brick. To improve the error detection of the robot, we use the IR sensor on the end effector to determine whether it has been handed a brick.
+The gripper then opens and moves forward slightly, ready to receive a brick. To improve the error detection of the robot, we use the IR sensor on the end effector to determine whether it has been handed a brick.
 `Handing DE-NIRO a brick`_
 
 IR Sensor
