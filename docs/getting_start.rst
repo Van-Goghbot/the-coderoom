@@ -32,7 +32,7 @@ Instructions
     
     $ python right_placement.py
 
-Whilst there's many python files required to make this project run, they're all run automatically from with `right_placement.py` to make it as easy as possibly to use.
+NOTE: Whilst there's many python files required to make this project run, they're all run automatically from with ``right_placement.py`` to make it as easy as possibly to use.
 
 .. figure::  imgs/terminator.png
    :align:   center
