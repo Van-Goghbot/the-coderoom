@@ -10,6 +10,12 @@ The code for ordering code is relatively simple, we first need to divide the coo
 
 .. literalinclude:: dominoes_code/right_placement.py
    :language: python
+   :lines: 182
+   :linenos:
+   :lineno-start: 182
+
+.. literalinclude:: dominoes_code/right_placement.py
+   :language: python
    :pyobject: None
    :linenos:
    :lines: 147-153
