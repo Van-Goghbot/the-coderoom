@@ -50,7 +50,7 @@ These coordinates are converted into ``Node`` objects. The node class is very si
    :lineno-start: 3
 
 
-Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribute ``p``. The reason this attribute is called p and not something more explanatory such as point list, is to allow the later functions to read more like the bezier equation outlined above. For example referencing point ``P_2`` can be done using ``Bezier.p[2]`` which reads very similarly making the code more legible.
+Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribute ``p``. The reason this attribute is called p and not something more explanatory such as point list, is to allow the later functions to read more like the bezier equation outlined above. For example referencing point :math:`P_2` can be done using ``Bezier.p[2]`` which reads very similarly making the code more legible.
 
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
@@ -88,21 +88,66 @@ The code is the equvilent of the following mathematical expression:
 
 Creating a Bezier from the Start and End Bricks
 -----------------------------------------------
+The code descibed below is all from the ``bezier_interpolation.py`` script unless otherwise stated. This function defined in this script takes the placed brick's positions and orientations and returns a list of poses for all the bricks that need to be placed inbetween them.
 
-.. figure::  imgs/start_end.png
+In order to use the Bezier class, ``bezier_conversion.py`` is imported at the beginning of the code.
+
+.. literalinclude:: dominoes_code/bezier_interpolation.py
+   :language: python
+   :lines: 2
+   :linenos:
+   :lineno-start: 2
+
+.. figure::  imgs/bricks_to_curvy_boi.png
    :align:   center
-   
-.. figure::  imgs/get_angles.png
-   :align:   center
-   
-.. figure::  imgs/curvy_boi.png
-   :align:   center
+
+The coordinates and brick rotation are fed into the ``create_path`` function from the main ``right_placement.py`` script.
+
+This information is used to generate a curve.
+
+The positioning of the control points
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:math: `P_0` and :math: `P_3` are simply the start and end coordinates fed into the function. However working our where :math: `P_1` and :math: `P_2` should be takes a little bit more work. 
+
+The angle of rotation, plus the variable handle influence variable are used to calculate the change in x and change in y from the start and end position with some simple trigonometry.
+
+.. literalinclude:: dominoes_code/bezier_interpolation.py
+   :language: python
+   :lines: 13-37
+   :linenos:
+   :lineno-start: 13
+
+These coordinates are then fed into a string variable called ``bezier_string`` which is consitent with the XML standard for representing Bezier curves. The variable ``bezier_string`` is passed as an argument in the instantiation of a new Bezier object. This means that we can now calculate the x and y coordinates of every point along the generated path by calling ``brick_path.B_x(t)`` and ``brick_path.B_y(t)``.
+
+.. literalinclude:: dominoes_code/bezier_interpolation.py
+   :language: python
+   :lines: 39 - 41
+   :linenos:
+   :lineno-start: 39
 
 Evenly Spacing the Bricks
 -------------------------
+Evenly Spaced t Values
+^^^^^^^^^^^^^^^^^^^^^^
+
+It would seem intuitive that if you wanted to evenly place 9 bricks along the path then you would increment the t value in 8 even steps.
+
+.. code-block:: python
+   for i in range(9):
+      t = i * (1/8)
+      x = brick_path.B_x(t)
+      y = brick_path.B_y(t)
+
+However due to the relationship t has to the curvature of the path, you actually get something that looks more like this.
+
+.. figure::  imgs/uneven.png
+   :align:   center
+
+And whilst it is good enough for creating a nice pattern, in the case of dominoes, you need to be able to specify how far apart they are spaced so you know that they will knock each other over.
 
 Approximating the Length of a Bezier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The easiest way to evenly space the points along the bezier would be to divide the bezier's length by the design number of bricks. However there is no mathematically simple way to calculate this accurately. Therefore an approximation of the length of the bezier has been used instead.
 
 Utilizing Memoisation to Improve Efficiency
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

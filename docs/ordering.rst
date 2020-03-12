@@ -7,19 +7,20 @@ The main benefit to oredring the path coordinates is that we can first assign co
 Code Overview
 --------------------
 The code for ordering code is relatively simple, we first need to divide the coordinate list into coordinates covered by the left arm and those covered by the right.
-::
-    for brick in coords:
-        if brick.x <= 0:
-            right.append((float(brick.x), float(brick.y), float(brick.rot)))
-        else:
-            left.append((float(brick.x), float(brick.y), float(brick.rot)))
-::
+
+.. literalinclude:: dominoes/right_placement.py
+   :language: python
+   :pyobject: None
+   :linenos:
+   :lines: 147-153
 
 Both lists need to be sorted into ascending order, the right list is then reversed, arranging the both sets of coordinates around 0.
-::
-    right.sort()
-    right = right[::-1]
-    left.sort()
+
+.. literalinclude:: dominoes/right_placement.py
+   :language: python
+   :pyobject: None
+   :linenos:
+   :lines: 172-175
 
 .. figure::  imgs/ordering.png
    :align:   center

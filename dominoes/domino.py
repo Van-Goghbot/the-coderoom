@@ -23,20 +23,18 @@ import simulation
 
 from sensor_msgs.msg import Range
 
-def setup_listener_left():
-    rospy.Rate(10.0)
-    rospy.Subscriber("/robot/range/left_hand_range/state",Range,callback,queue_size = 1)
-
 def callback_left(msg):
+    #Setup listener to feed back IR range of left arm
     global left_arm_range
     left_arm_range = msg.range
 
 def callback_right(msg):
+    #Setup listener to feed back IR range of right arm
     global right_arm_range
     right_arm_range = msg.range
 
 def move(arm,x,y,z,r,p,ya,pnp):
-    #Move to a given point using cartesian coordinates
+    #Move to a given point using cartesian coordinates and euler angles
     quat = tf.transformations.quaternion_from_euler(r,p,ya)
 
     pose = Pose()
@@ -48,17 +46,15 @@ def move(arm,x,y,z,r,p,ya,pnp):
     pose.orientation.z = quat[2]
     pose.orientation.w = quat[3]
 
-    #print("x = {0}, y = {1}, z = {2}, roll = {3}, pitch = {4}, yaw = {5}".format(x,y,z,r,p,ya))
-
+    #Use the provided servo_to_pose function to move the corresponding arm
     if arm == 'l':
         pnp._servo_to_pose(pose)
     elif arm == 'r':
-        print("RIGHT ARM")
         pnp._servo_to_pose(pose)
     return x,y,z,r,p,ya
 
 def safe_point_r(pnp):
-    #Function to return arms to tucked position
+    #Function to return arms to a safe tucked position
     right_joint_angles = {'right_s0': -0.2823,
                   'right_s1': -1.13965,
                   'right_e0': 1.0771,
@@ -68,7 +64,7 @@ def safe_point_r(pnp):
                   'right_w2': -1.7079
                   }
     pnp._guarded_move_to_joint_position(right_joint_angles)
-    print ("Moving to safe point")
+    print ("Moved to safe point")
 
 def safe_point_l(pnp):
     #Function to return arms to tucked position    
@@ -81,37 +77,21 @@ def safe_point_l(pnp):
                  'left_w2': -1.072
                  }
     pnp._guarded_move_to_joint_position(left_joint_angles)
-    print ("Moving to safe point")
+    print ("Moved to safe point")
 
 def place(x,y,z,r,p,ya,height,arm,pnp):
-    global left_arm_range
-    global right_arm_range
-
-    conversion = 0
-    # ----------------------
-    #rospy.init_node('infra_red_listener')
-    rospy.Subscriber("/robot/range/left_hand_range/state",Range,callback_left,queue_size = 1)
-    time.sleep(0.5)
-    rospy.Subscriber("/robot/range/right_hand_range/state",Range,callback_right,queue_size = 1)
-    time.sleep(0.5)
-    #rospy.spin()
-    # ----------------------
-    print(left_arm_range, right_arm_range)
-    #Function to hover and place bricks on the table
+    #Place bricks at the specified coordinate
+    print ("Placing with {0} arm".format(str(arm)))
+    move(arm,x,y,z+height,r,p,ya,pnp) #Move to a hover point
+    move(arm,x,y,z,r,p,ya,pnp) #Lower to place point
     if arm == 'l':
-        adjustment = left_arm_range * conversion
-    else:
-        adjustment = right_arm_range * conversion
-
-    move(arm,x,y,z+height,r,p,ya,pnp)
-    move(arm,x,y,z,r + adjustment,p,ya,pnp)
-    if arm == 'l':
-        pnp.gripper_open()
-        rospy.sleep(0.1)
+        pnp.gripper_open() #Release brick
+        rospy.sleep(0.1) #Pause to let brick settle
     if arm == 'r':
         pnp.gripper_open()
         rospy.sleep(0.1)
-    move(arm,x,y,z+height,r,p,ya,pnp)
+    move(arm,x,y,z+height,r,p,ya,pnp) #Move back to hover point
+
     #Move back to a safe point
     if arm == 'l':
         brick_place('l',-0.5929,-1.3422,0.3146,1.3544,3.059-3.14,1.5702,-1.072,pnp)
@@ -119,47 +99,71 @@ def place(x,y,z,r,p,ya,height,arm,pnp):
         brick_place('r',-0.2823,-1.13965,1.0771,1.08657,-0.387,1.8194,-1.7079,pnp)
     return x,y,z+height,r,p,ya
 
-def pick(arm,pnp,movement_count):
+def pick(arm,pnp,movement_count,sim):
     #Function to pick up a brick with a given arm from a set position
+
+    #Take IR ranges from callback functions
+    global left_arm_range
+    global right_arm_range
+
+    #Setup subscribers to update left and right arm ranges
+    rospy.Subscriber("/robot/range/left_hand_range/state",Range,callback_left,queue_size = 1)
+    time.sleep(0.5) #Pause to make sure the subscriber has time to retrieve latest values
+    rospy.Subscriber("/robot/range/right_hand_range/state",Range,callback_right,queue_size = 1)
+    time.sleep(0.5)
+
     if arm == 'l':
         print ("Picking with left arm")
-        #Move to 0.5,0.8,0.5,0,3.14/2,0
+
+        #Move to picking point
         brick_place('l',1.045,-1.2174,-0.5546,1.8941,1.5558,-1.2412,-0.9172,pnp)
         pnp.gripper_open()
+        #Recieve brick
         coord = move('l',0.6,0.8,0.5,0,3.14/2,0,pnp)
 
-        #simulation.load_brick1()
-        spawn_brick(movement_count)
+        #Wait until there is a brick in the gripper
+        if sim != True:
+            while left_arm_range > 0.6:
+                rospy.sleep(0.1)
+
+        #Load brick in the simulation
+        if sim == True:
+            spawn_brick(movement_count)
 
         pnp.gripper_close()
+
+        #Move back to safe point
         brick_place('l',1.045,-1.2174,-0.5546,1.8941,1.5558,-1.2412,-0.9172,pnp)
-        # #Move to 0.6,0.5,0.4,0,3.14,-0
-        #brick_place('l',-0.5967,-1.344,0.3188,1.3571,3.059,-1.5673,-2.642)
-        #Move to 0.6,0.5,0.4,0,3.14,3.14/2
-        #brick_place('l',-0.5929,-1.3422,0.3146,1.3544,3.059,-1.5702,-1.072)
         brick_place('l',-0.5929,-1.3422,0.3146,1.3544,3.059-3.14,1.5702,-1.072,pnp)
+
     elif arm == 'r':
         print ("Picking with right arm")
-        #Move tp 0.5,-0.8,0.5,0,3.14/2,0
+
+        #Move to picking point
         brick_place('r',-1.032,-1.222,0.5439,1.897,-1.5479,-1.239,0.9162,pnp)
         pnp.gripper_open()
-        print ("move('r',0.6,-0.8,0.5,0,3.14/2,0,pnp)")
+        #Recieve brick
         coord = move('r',0.6,-0.8,0.5,0,3.14/2,0,pnp)
-        print("MOVED")
 
-        #simulation.load_brick2()
-        spawn_brick(movement_count)
+        #Wait until there is a brick in the gripper
+        if sim != True:
+            while right_arm_range > 0.6:
+                rospy.sleep(0.1)
+
+        #Load brick in the simulation
+        if sim == True:
+            spawn_brick(movement_count)
 
         pnp.gripper_close()
+
+        #Move back to safe point
         brick_place('r',-1.032,-1.222,0.5439,1.897,-1.5479,-1.239,0.9162,pnp)
-        #Move to 0.6,-0.5,0.45,0,3.14,-0
         brick_place('r',-0.1652,-1.2395,0.81048,1.1156,-0.2439,1.7843,-0.222,pnp)
-        #Move to 0.6,-0.5,0.45,0,3.14,3.14/2
         brick_place('r',-0.2823,-1.13965,1.0771,1.08657,-0.387,1.8194,-1.7079,pnp)
 
-def pickandplace(arm,pnp,x,y,z,r,p,ya,height,movement_count):
+def pickandplace(arm,pnp,x,y,z,r,p,ya,height,movement_count,sim):
     #Combined pick and place functions
-    pick(arm,pnp,movement_count)
+    pick(arm,pnp,movement_count,sim)
     place(x,y,z,r,p,ya,height,arm,pnp)
 
 
@@ -186,23 +190,6 @@ def brick_place(arm,s0,s1,e0,e1,w0,w1,w2,pnp):
                          }
         pnp._guarded_move_to_joint_position(joint_angles)
 
-def knock_down(x,y,z):
-    #Function to knock down the arranged bricks
-    if y >= 0:
-        print ("Knocking down with left arm")
-        arm = 'l'
-        offset = 0.1
-        brick_place('l',-0.5929,-1.3422,0.3146,1.3544,3.059-3.14,1.5702,-1.072)
-        left_pnp.gripper_close()
-    elif y <= 0:
-        print ("Knocking down with right arm")
-        arm = 'r'
-        offset = -0.1
-        brick_place('r',-0.2823,-1.13965,1.0771,1.08657,-0.387,1.8194,-1.7079)
-        right_pnp.gripper_close()
-    coord = move(arm,x,y+offset,z,0,3.14,0)
-    coord = move(arm,x,y-offset,z,0,3.14,0)
-
 def ik_test(x,y,z,r,p,ya,hover,pnp1,pnp2):
     #Function to test whether a range of coordinates are within workspace
     quat = tf.transformations.quaternion_from_euler(r,p,ya)
@@ -215,6 +202,7 @@ def ik_test(x,y,z,r,p,ya,hover,pnp1,pnp2):
     pose.orientation.z = quat[2]
     pose.orientation.w = quat[3]
 
+    #Specify second pose to test hover point
     pose2 = Pose()
     pose2.position.x = x
     pose2.position.y = y
@@ -224,17 +212,16 @@ def ik_test(x,y,z,r,p,ya,hover,pnp1,pnp2):
     pose2.orientation.z = quat[2]
     pose2.orientation.w = quat[3]
 
-    # print(x, y, z)
-
-    if y <= 0:
+    if y <= 0:#Test coordinates on the right side
+        #Test with right arm
         limb_joints = pnp1.ik_request(pose)
         limb_joints_up = pnp1.ik_request(pose2)
         if limb_joints == False or limb_joints_up == False:
+            #If right arm fails, try with left
             print ("Right arm failed")
             limb_joints = pnp2.ik_request(pose)
             limb_joints_up = pnp2.ik_request(pose2)
             if limb_joints_up == False or limb_joints_up == False:
-                print ("Try 2 - left failed")
                 print ("FAILED COORDINATE")
             else:
                 print ("SUCCESSFUL COORDINATE")
@@ -242,15 +229,17 @@ def ik_test(x,y,z,r,p,ya,hover,pnp1,pnp2):
         else:
             print ("SUCCESSFUL COORDINATE")
             pass
-    elif y >= 0:
+
+    elif y >= 0: #Test coordinates on the left side
+        #Test with left arm
         limb_joints = pnp2.ik_request(pose)
         limb_joints_up = pnp2.ik_request(pose2)
         if limb_joints == False or limb_joints_up == False:
+            #If left arm fails, try with right
             print ("Left arm failed")
             limb_joints = pnp1.ik_request(pose)
             limb_joints_up = pnp1.ik_request(pose2)
             if limb_joints == False or limb_joints_up == False:
-                print ("Try 2 - right failed")
                 print ("FAILED COORDINATE")
             else:
                 print ("SUCCESSFUL COORDINATE")
@@ -262,6 +251,7 @@ def ik_test(x,y,z,r,p,ya,hover,pnp1,pnp2):
     return limb_joints,limb_joints_up
 
 def spawn_brick(movement_count):
+    #Load the relevant brick depending on what stage we are at
     if movement_count == 1:
         simulation.load_brick1()
     elif movement_count == 2:

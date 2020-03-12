@@ -45,5 +45,5 @@ Amy Mather, Euan Hay, Esther Maltby, Alisa Lomax, Saym Hussain
 .. _Project overview: https://drive.google.com/open?id=1g-9TisHWX9m03OYFH9l2GGtcYhuyJFod
 .. _Domino placement - Simulation: https://drive.google.com/file/d/1i8YlybJPy28riKpq7beLlXRQaOJQ-tgj/view?usp=sharing
 .. _Domino placement - Real life: https://drive.google.com/file/d/1QDtLKm7E8it-bFPhVYY9rXpznGsEYBhl/view?usp=sharing
-.. _Setting up and running code: https://drive.google.com/open?id=1lktOeKbDyoFWd7Rs68qHZoQbTwlkEaNM
+.. _Setting up and running code: https://drive.google.com/open?id=1ikvy-zoK48acajkLAyTWm_Xm91PtloFZ
 .. _Presentation slides: https://imperiallondon-my.sharepoint.com/:p:/r/personal/aem4717_ic_ac_uk/Documents/Robotics%20Animation%20Celebration.pptx?d=w0f6adfd3853f42e49dc6cef74dffe3f8&csf=1&e=LNiWVl
