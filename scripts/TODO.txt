@@ -1,6 +1,0 @@
-
-1. Get ROS gazebo working
-
-Arm is going to low to grab bricks
-1.Place bricks at arbitary orietnation
-1. Add interface for gripper on real Franka
