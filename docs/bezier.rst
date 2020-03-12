@@ -64,7 +64,7 @@ Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribu
    :pyobject: Bezier.conversion
    :linenos:
    :lineno-start: 16
-   :dedent: 4
+   :dedent: 1
    
 B_x
 ^^^
