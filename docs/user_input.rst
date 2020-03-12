@@ -12,9 +12,9 @@ We determine the start and end points by creating a listener for the left and ri
 
 .. literalinclude:: dominoes_code/listener.py
    :language: python
-   :lines: 4-7
+   :lines: 5-8
    :linenos:
-   :lineno-start: 4
+   :lineno-start: 5
         
 For our pusposes, we only need the x,y coordinates (to determine where on the table it will be positioned) and the yaw angle (to determine the placement orientation).
 
