@@ -88,15 +88,25 @@ The code is the equvilent of the following mathematical expression:
 
 Creating a Bezier from the Start and End Bricks
 -----------------------------------------------
+The code descibed below is all from the ``bezier_interpolation.py`` script unless otherwise stated. This function defined in this script takes the placed brick's positions and orientations and returns a list of poses for all the bricks that need to be placed inbetween them.
 
-.. figure::  imgs/start_end.png
+.. figure::  imgs/bricks_to_curvy_boi.png
    :align:   center
-   
-.. figure::  imgs/get_angles.png
-   :align:   center
-   
-.. figure::  imgs/curvy_boi.png
-   :align:   center
+
+The coordinates and brick rotation are fed into the ``create_path`` function from the main ``right_placement.py`` script.
+
+This information is used to generate a curve.
+
+The positioning of the control points
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+P0 and P3 are simply the start and end coordinates fed into the function. However working our where P1 and P2 should be takes a little bit more work.
+
+.. literalinclude:: dominoes_code/bezier_conversion.py
+   :language: python
+   :lines: 13-25
+   :linenos:
+   :lineno-start: 66
+
 
 Evenly Spacing the Bricks
 -------------------------
