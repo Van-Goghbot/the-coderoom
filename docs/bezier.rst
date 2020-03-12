@@ -41,7 +41,7 @@ Conversion
 ^^^^^^^^^^^
 The conversion method is called during the instantiation of a Bezier object. It iterates through the characters in the inputted string and extracts the coordinates from it.
 
-These coordinates are converted into ``Node`` objects. The node class is very simple, it has two attribute: x and y. It has no method.
+These coordinates are converted into ``Node`` objects. The node class is very simple, it has two attribute: x and y. It has no methods other than ``__init__``.
 
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
