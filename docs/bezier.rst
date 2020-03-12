@@ -45,7 +45,6 @@ Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribu
    :language: python
    :lines: 16-57
    :lineos:
-   :lineno-start: 16
    
 B_x
 ^^^
@@ -55,7 +54,6 @@ This method takes a t value and returns the corresponding x coordinate. The vari
    :language: python
    :lines: 59-64
    :lineos:
-   :lineno-start: 59
 
 The code is the equvilent of the following mathematical expression:
 
@@ -69,7 +67,6 @@ This method takes a t value and returns the corresponding y coordinate. The vari
    :language: python
    :lines: 66-71
    :lineos:
-   :lineno-start: 66
 
 The code is the equvilent of the following mathematical expression:
 
