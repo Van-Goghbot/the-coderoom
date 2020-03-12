@@ -9,7 +9,7 @@ The first thing we want to do when we've selected a path is to send the coordina
    
 We achieve this by using the subprocess module in Python to run two scripts simultaneously. To give ``left_placement.py`` the working coordinates, we integrate them as command line arguments:
 
-.. literalinclude:: dominoes/right_placement.py
+.. literalinclude:: dominoes_code/right_placement.py
    :language: python
    :lines: 182
    :linenos:
@@ -17,7 +17,7 @@ We achieve this by using the subprocess module in Python to run two scripts simu
    
 A new node is created and the coordinates can then be interpreted.
 
-.. literalinclude:: dominoes/left_placement.py
+.. literalinclude:: dominoes_code/left_placement.py
    :language: python
    :lines: 30-36
    :linenos:
@@ -25,7 +25,7 @@ A new node is created and the coordinates can then be interpreted.
    
 Then we can just give the same command to the left and right arms; pick and place the bricks in the specified coordinates.
 
-.. literalinclude:: dominoes/left_placement.py
+.. literalinclude:: dominoes_code/left_placement.py
    :language: python
    :lines: 57-62
    :linenos:
@@ -38,7 +38,7 @@ Picking
   The picking function can be found at ``line 122 in domino.py``
 We first want to move the arms to a 'safe point' using joint angles to get to a midpoint which will prevent the arms from getting twisted and thus mitigating redundancies.
 
-.. literalinclude:: dominoes/domino.py
+.. literalinclude:: dominoes_code/domino.py
    :language: python
    :lines: 118-119
    :linenos:
@@ -53,13 +53,13 @@ We achieve this by creating a listener and subscribing to the IR sensor topic fo
 
 .. _Handing DENIRO a brick: https://drive.google.com/open?id=1X7xDFg5td2QZFyYkaZnfSWQ3x5a8MqJ3
 
-.. literalinclude:: dominoes/domino.py
+.. literalinclude:: dominoes_code/domino.py
    :language: python
    :lines: 26-34
    :linenos:
    :lineno-start: 26
    
-.. literalinclude:: dominoes/domino.py
+.. literalinclude:: dominoes_code/domino.py
    :language: python
    :lines: 105-113
    :linenos:
@@ -67,7 +67,7 @@ We achieve this by creating a listener and subscribing to the IR sensor topic fo
    
 The readings from this topic can then be used within the ``pick`` function to determine whether a brick is in the grippers. 
 
-.. literalinclude:: dominoes/domino.py
+.. literalinclude:: dominoes_code/domino.py
    :language: python
    :lines: 124-127
    :linenos:
