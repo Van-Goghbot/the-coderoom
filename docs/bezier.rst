@@ -107,7 +107,7 @@ This information is used to generate a curve.
 
 The positioning of the control points
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The points :math: `P_0` and :math: `P_3` are simply the start and end coordinates fed into the function. However working our where :math: `P_1` and :math: `P_2` should be takes a little bit more work. 
+The points :math:`P_0` and :math:`P_3` are simply the start and end coordinates fed into the function. However working our where :math:`P_1` and :math:`P_2` should be takes a little bit more work. 
 
 The angle of rotation, plus the variable handle influence variable are used to calculate the change in x and change in y from the start and end position with some simple trigonometry.
 
