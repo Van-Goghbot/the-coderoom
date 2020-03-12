@@ -2,7 +2,7 @@ Ordering
 ====================
 Overview
 --------------------
-The main benefit to oredring the path coordinates is that we can first assign coordinates to either the left or right arm, then we can place the bricks from the centre of the table outwards, preventing the arms from knocking over previously placed bricks.
+The main benefit to ordering the path coordinates is that we can first assign coordinates to either the left or right arm, then we can place the bricks from the centre of the table outwards, preventing the arms from knocking over previously placed bricks.
 
 Code Overview
 --------------------
