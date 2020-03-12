@@ -156,6 +156,9 @@ Approximating the Length of a Bezier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The easiest way to evenly space the points along the bezier would be to divide the bezier's length by the design number of bricks. However there is no mathematically simple way to calculate this accurately. Therefore an approximation of the length of the bezier has been used instead.
 
+.. figure::  imgs/length.gif
+   :align:   center
+
 Utilizing Memoisation to Improve Efficiency
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
