@@ -36,7 +36,7 @@ Presentation
 
 Github
 -------
-The fully commented and working code can be found `here <https://github.com/Van-Goghbot/the-coderoom/dominoes>`_.
+The fully commented and working code can be found `here <https://github.com/Van-Goghbot/the-coderoom/tree/master/dominoes>`_.
 
 To see the version and commit history of the code please look `here <https://github.com/Van-Goghbot/the-coderoom-dominoes>`_, but it doesn't have the most recent comments and includes files which are no longer in use.
 
