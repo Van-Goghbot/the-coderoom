@@ -89,6 +89,15 @@ The code is the equvilent of the following mathematical expression:
 Creating a Bezier from the Start and End Bricks
 -----------------------------------------------
 
+.. figure::  imgs/start_end.png
+   :align:   center
+   
+.. figure::  imgs/get_angles.png
+   :align:   center
+   
+.. figure::  imgs/curvey_boi.png
+   :align:   center
+
 Evenly Spacing the Bricks
 -------------------------
 
