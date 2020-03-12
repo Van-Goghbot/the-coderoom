@@ -50,6 +50,7 @@ Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribu
 B_x
 ^^^
 This method takes a t value and returns the corresponding x coordinate. The variables ``c0`` - ``c1`` are the different sections of the expanded form of the Bezier equation shown above.
+
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
    :startafter: old_coord = coord\n
