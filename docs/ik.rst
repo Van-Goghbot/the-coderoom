@@ -13,6 +13,7 @@ To achieve this, we input the necessary pose and hover distance to check whether
 
 .. literalinclude:: dominoes_code/right_placement.py
    :language: python
+   :dedent: 3
    :lines: 159
    :linenos:
    :lineno-start: 159
@@ -26,6 +27,7 @@ During testing we found that the bricks wouldn't knock over reliably on a flat s
    
 .. literalinclude:: dominoes_code/right_placement.py
    :language: python
+   :dedent: 2
    :lines: 130-144
    :linenos:
    :lineno-start: 130
@@ -36,6 +38,7 @@ We must first input the coordinates and orientation as a pose:
 
 .. literalinclude:: dominoes_code/domino.py
    :language: python
+   :dedent: 1
    :lines: 196-213
    :linenos:
    :lineno-start: 196
@@ -44,6 +47,7 @@ If the coordinate is on the left side, we want to test that with the left side a
 
 .. literalinclude:: dominoes_code/right_placement.py
    :language: python
+   :dedent: 3
    :lines: 162-165
    :linenos:
    :lineno-start: 162
@@ -52,6 +56,7 @@ If the initial path has failed we have to rerun the path with a straighter path.
 
 .. literalinclude:: dominoes_code/right_placement.py
    :language: python
+   :dedent: 1
    :lines: 202-215
    :linenos:
    :lineno-start: 202
@@ -60,6 +65,7 @@ If this still doesn't work after 10 tries it means even a straight line won't wo
 
 .. literalinclude:: dominoes_code/right_placement.py
    :language: python
+   :dedent: 2
    :lines: 218-219
    :linenos:
    :lineno-start: 218
