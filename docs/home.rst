@@ -42,8 +42,7 @@ Github
 Contributors
 -------------
 
-Amy Mather, Euan Hay
-Esther Maltby, Alisa Lomax, Saym Hussain
+Amy Mather & Euan Hay with some help from Esther Maltby, Alisa Lomax, Saym Hussain
 
 .. _Github repository: https://github.com/Van-Goghbot
 .. _Project overview: https://youtu.be/HDAchGnagOo
