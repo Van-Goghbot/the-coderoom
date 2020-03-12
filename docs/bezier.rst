@@ -43,7 +43,7 @@ Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribu
 
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
-   :pyobject: Bezier.conversion
+   :lines: 16-57
    :lineos:
    :lineno-start: 16
    
@@ -53,14 +53,27 @@ This method takes a t value and returns the corresponding x coordinate. The vari
 
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
-   :startafter: old_coord = coord\n
-   :endbefore: \n
+   :lines: 59-64
    :lineos:
    :lineno-start: 59
+
+The code is the equvilent of the following mathematical expression:
+
+.. math:: B_x(t)=(1-t)^{3} P_{0x} + 3(1-t)^{2} t P_{1x} + 3(1-t) t^{2} P_{2x} + t^{3} P_{3x}
 
 B_y
 ^^^
 This method takes a t value and returns the corresponding y coordinate. The variables ``c0`` - ``c1`` are the different sections of the expanded form of the Bezier equation shown above.
+
+.. literalinclude:: dominoes_code/bezier_conversion.py
+   :language: python
+   :lines: 66-71
+   :lineos:
+   :lineno-start: 66
+
+The code is the equvilent of the following mathematical expression:
+
+.. math:: B_y(t)=(1-t)^{3} P_{0y} + 3(1-t)^{2} t P_{1y} + 3(1-t) t^{2} P_{2y} + t^{3} P_{3y}
 
 Creating a Bezier from the Start and End Bricks
 -----------------------------------------------
