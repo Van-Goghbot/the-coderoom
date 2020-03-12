@@ -133,7 +133,6 @@ Evenly Spaced t Values
 It would seem intuitive that if you wanted to evenly place 9 bricks along the path then you would increment the t value in 8 even steps.
 
 .. code-block:: python
-   :emphasize-lines: 3,5
    
    for i in range(9):
       t = i * (1/8)
@@ -154,7 +153,7 @@ The easiest way to evenly space the points along the bezier would be to divide t
 Utilizing Memoisation to Improve Efficiency
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Converting Distance Along Path to Catesean Coordinates
+Converting Distance Along Path to Cartesean Coordinates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Rotating the Bricks to be Normal to the Path
