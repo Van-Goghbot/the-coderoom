@@ -235,10 +235,35 @@ Calculating Tangent Line
 ^^^^^^^^^^^^^^^^^^^^^^^^
 To overcome this issue the tangent to the curve at each coordinate is calculated, and the bricks are then placed so they're normal to the curve.
 
-The tangent is calculated by deviating very slighlty from the specified t value using the variable ``dt``. 
+The tangent line is calculated by deviating very slightly from the specified t value using the variable ``dt``. The change in x and change in y calculated are used to calculate the angle of the tangent. The `math.arctan2()` function is used to preserve the sign of the coordinates, ensuring the correct angle is given.
+
+.. literalinclude:: dominoes_code/bezier_interpolation.py
+   :language: python
+   :lines: 68-71
+   :lineno-start: 68
 
 
+The value of ``dt`` is set to 0.01 which we found to work well.
+.. literalinclude:: dominoes_code/bezier_interpolation.py
+   :language: python
+   :lines: 44
+   :lineno-start: 44
 
-Converting to Rotation
-^^^^^^^^^^^^^^^^^^^^^^
+To make the code a little bit more readble, a Coordinate class was created with x, y and rotation attributes.
 
+.. literalinclude:: dominoes_code/bezier_interpolation.py
+   :language: python
+   :pyobject: Coordinate
+   :lineno-start: 4
+
+The calculated poses are used to create new instances of the Coordinate class, and are stored in the ``brick_poses`` list. This is returned to the script which called it. In our case it called by the ``right_placement.py`` script after the user has decided upon the start and end brick position.
+
+.. literalinclude:: dominoes_code/bezier_interpolation.py
+   :language: python
+   :lines: 44
+   :lineno-start: 44
+
+So now the final output is a valid domino path which is automatically generated from any start parameters. *happy dance*
+
+.. figure::  imgs/even.png
+   :align:   center
