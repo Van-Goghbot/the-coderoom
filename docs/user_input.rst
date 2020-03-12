@@ -4,7 +4,7 @@ User Input
 
 Overview
 ------------------------
-(EDIT LATER) We want to take user input for the start and end positions of the path
+We want to take user input for the start and end positions of the path which will allow us to define the curve for the dominoes to be placed on.
 
 Code overview
 ------------------------
