@@ -26,9 +26,7 @@ The instantiation of a Bezier object takes a string input which can be copied fr
 
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
-   :lines: 9-14
    :lineos:
-   :lineno-start: 9
 
 NOTE: Alternatively you can easily construct your own string, as it is essentially just a list of coordinates in the following format:
 
@@ -44,7 +42,6 @@ Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribu
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
    :lines: 16-57
-   :lineos:
    
 B_x
 ^^^
@@ -53,7 +50,6 @@ This method takes a t value and returns the corresponding x coordinate. The vari
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
    :lines: 59-64
-   :lineos:
 
 The code is the equvilent of the following mathematical expression:
 
