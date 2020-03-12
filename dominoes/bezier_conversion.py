@@ -1,3 +1,5 @@
+# for more details on how this script works please refer to the documentation
+# which can be found here: https://van-goghbot.readthedocs.io/en/latest/bezier.html#representing-a-bezier-in-code
 import math, numpy
 
 class Node:
@@ -36,8 +38,8 @@ class Bezier:
 		coordinate_string = coordinate_string.split(",")
 
 		coordinate_string = [float(num) for num in coordinate_string]
-		# print(coordinate_string)
-
+		
+		
 		# Pairs the coordinates (x,y)
 		i = 1
 		coordinates = []
@@ -57,6 +59,9 @@ class Bezier:
 			old_coord = coord
 
 	def B_x(self, t):
+		'''
+		converts the t value to the corresponding x coordinate
+		'''
 		c0 = (1 - t)**3*self.p[0].x
 		c1 = 3*(1 - t)**2*t*self.p[1].x
 		c2 = 3*(1 - t)*t**2*self.p[2].x
@@ -64,6 +69,9 @@ class Bezier:
 		return c0 + c1 + c2 + c3
 
 	def B_y(self, t):
+		'''
+		converts the t value to the corresponding y coordinate
+		'''
 		c0 = (1 - t)**3*self.p[0].y
 		c1 = 3*(1 - t)**2*t*self.p[1].y
 		c2 = 3*(1 - t)*t**2*self.p[2].y
@@ -71,6 +79,18 @@ class Bezier:
 		return c0 + c1 + c2 + c3
 
 	def length_approximation(self, resolution):
+		'''
+		Approximates the length of the bezier curve by treating the curve as
+		a number of straight lines.
+		
+		Resolution defines how many lines this is.
+		
+		The hight the resolution the slower the running time but the more
+		accurate the resulting answer and t_map.
+		
+		t_map is a dictionary which allows you to look up which distances
+		correspond to which t value.
+		'''
 			self.length = 0
 			old_length = 0
 			self.t_map = {}
@@ -81,10 +101,16 @@ class Bezier:
 				x = self.B_x(t)
 				y = self.B_y(t)
 				if old_y:
+					# Trigonometry is used to calculate the distance
+					# between the current point and the previous point
 					dy = y - old_y
 					dx = x - old_x
 					old_length = self.length
 					self.length += (dy**2 + dx**2) ** 0.5
+					
+					# All distances between the previous recorded total length
+					# and the current length, to 3d.p are then mapped to the
+					# current t value, by using them as dictionary keys
 					map_range = numpy.arange(old_length, self.length, 0.001)
 					for index in map_range:
 						self.t_map[round(index,3)] = t
