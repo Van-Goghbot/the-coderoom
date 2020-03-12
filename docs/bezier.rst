@@ -25,7 +25,7 @@ The instantiation of a Bezier object takes a string input which can be copied fr
 
 .. literalinclude:: dominoes_code/bezier_conversion.py
    :language: python
-   :pyobject: Bezier.__init__
+   :pyobject: Bezier
    :lineos:
    :lineno-start: 9
 
