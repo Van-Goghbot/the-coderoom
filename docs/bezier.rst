@@ -16,7 +16,7 @@ These control points are used in the following equation:
 
 Representing a Bezier in Code
 -----------------------------
-All of the code in this section is from the ``bezier_conversion.py`` file.
+All of the code in this section is from the ``bezier_conversion.py`` file. The line numbers of the following code snippets correspond to their position within this file. 
 
 The Bezier Class
 ^^^^^^^^^^^^^^^^
@@ -28,6 +28,7 @@ The instantiation of a Bezier object takes a string input which can be copied fr
    :language: python
    :pyobject: Bezier.__init__
    :linenos:
+   :line-start: 11
 
 NOTE: Alternatively you can easily construct your own string, as it is essentially just a list of coordinates in the following format:
 
@@ -36,7 +37,14 @@ Conversion
 ^^^^^^^^^^^
 The conversion method is called during the instantiation of a Bezier object. It iterates through the characters in the inputted string and extracts the coordinates from it.
 
-These coordinates are converted into Node objects. The node class is very simple, it has two attribute: x and y. It has no method.
+These coordinates are converted into ``Node`` objects. The node class is very simple, it has two attribute: x and y. It has no method.
+
+.. literalinclude:: dominoes_code/bezier_conversion.py
+   :language: python
+   :pyobject: None
+   :linenos:
+   :line-start: 3
+
 
 Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribute ``p``. The reason this attribute is called p and not something more explanatory such as point list, is to allow the later functions to read more like the bezier equation outlined above. For example referencing point ``P_2`` can be done using ``Bezier.p[2]`` which reads very similarly making the code more legible.
 
@@ -44,6 +52,7 @@ Each ``Node`` object is then appended to a list stored in the ``Bezier`` attribu
    :language: python
    :pyobject: Bezier.conversion
    :linenos:
+   :line-start: 16
    
 B_x
 ^^^
@@ -53,6 +62,7 @@ This method takes a t value and returns the corresponding x coordinate. The vari
    :language: python
    :pyobject: Bezier.B_x
    :linenos:
+   :line-start: 59
 
 The code is the equvilent of the following mathematical expression:
 
@@ -66,6 +76,7 @@ This method takes a t value and returns the corresponding y coordinate. The vari
    :language: python
    :pyobject: Bezier.B_y
    :linenos:
+   :line-start: 66
 
 The code is the equvilent of the following mathematical expression:
 
